@@ -1,6 +1,8 @@
 # Deadlock DPS Checker
 
-Deadlock で自分と敵のヒーロー・アイテム・スキル・バフを組み合わせて、どれくらいの DPS が出るかを計算するサイト（開発中）。
+Deadlock で自分と敵のヒーロー・アイテム・スキル・バフを組み合わせて、どれくらいの DPS が出るかを計算するサイト。
+
+https://kyozoc.github.io/Deadlock-DPSChecker/
 
 ## ゲームデータ
 
@@ -13,7 +15,14 @@ Deadlock で自分と敵のヒーロー・アイテム・スキル・バフを�
 npm install
 npm run data:fetch              # 最新データを取得して game-data.json を作り直す
 npm run data:fetch -- --offline # .cache/ の前回取得分から作り直す（整形ロジックを変えたとき用）
+npm run images:fetch            # アイコンを public/icons/ に取得 (data:fetch の後に実行)
 ```
+
+GitHub Actions (`.github/workflows/update-data.yml`) が毎日これを実行し、
+変更があればテストを通したうえで main に commit して公開し直す。
+
+アイコンは [deadlock-open-assets](https://github.com/0xThiagoAmaral/deadlock-open-assets) (MIT) から取得している。
+新しいヒーローなど画像が無いものは頭文字で表示する。
 
 取得元のビルドがずれている・欠損があるなどの問題は `meta.warnings` と実行時のログに出る。
 

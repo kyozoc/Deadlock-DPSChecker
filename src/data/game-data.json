@@ -3296,7 +3296,8 @@
       "key": "hero_werewolf_transformed",
       "id": null,
       "name": {
-        "en": "Silver (Transformed)"
+        "en": "Silver (Transformed)",
+        "ja": "シルバー（変身後）"
       },
       "type": "Brawler",
       "stats": {

@@ -1,0 +1,62 @@
+name: Update game data
+
+# 毎日パッチを確認して、データやアイコンが変わっていたら main に commit して公開し直す
+on:
+  schedule:
+    - cron: '17 19 * * *' # 毎日 04:17 (日本時間)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: update-data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/cache@v4
+        with:
+          path: .cache/images
+          key: icon-cache-${{ hashFiles('scripts/fetch-images.ts') }}
+      - run: npm ci
+      - run: npm run data:fetch
+      - run: npm run images:fetch
+
+      - id: diff
+        run: |
+          if [ -n "$(git status --porcelain -- src/data public/icons)" ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "version=$(node -p "require('./src/data/game-data.json').meta.gameVersion")" >> "$GITHUB_OUTPUT"
+          fi
+
+      # 新しいデータでテストとビルドが通ったときだけ反映する
+      - if: steps.diff.outputs.changed == 'true'
+        run: |
+          npm run typecheck
+          npm test
+          npm run build
+
+      - if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data public/icons
+          git commit -m "Update game data (build ${{ steps.diff.outputs.version }})"
+          git push origin HEAD:main
+
+      # GITHUB_TOKEN での push では他のワークフローが動かないので、公開を明示的に起動する
+      - if: steps.diff.outputs.changed == 'true'
+        run: gh workflow run deploy.yml --ref main
+        env:
+          GH_TOKEN: ${{ github.token }}

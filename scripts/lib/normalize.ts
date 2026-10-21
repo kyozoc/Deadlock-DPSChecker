@@ -213,10 +213,15 @@ function buildHero(key: string, raw: Raw, input: RawInputs, warnings: string[]):
 
   const heroId = isObject(vdataHero) && typeof vdataHero.m_HeroID === 'number' ? vdataHero.m_HeroID : null;
 
+  const name = localized(key, raw.Name, input.japanese);
+  // 変身後フォームは deadbot が作るエントリでローカライズが無いので、変身前の名前から作る
+  const baseKey = key.replace(/_transformed$/, '');
+  if (!name.ja && baseKey !== key && input.japanese[baseKey]) name.ja = `${input.japanese[baseKey]}（変身後）`;
+
   return {
     key,
     id: heroId,
-    name: localized(key, raw.Name, input.japanese),
+    name,
     type: typeof raw.Type === 'string' ? raw.Type : null,
     stats,
     levelScaling: numericRecord(raw.LevelScaling),
