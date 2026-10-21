@@ -20,6 +20,16 @@ npm run data:fetch -- --offline # .cache/ の前回取得分から作り直す�
 ## 開発
 
 ```sh
+npm run dev        # ローカルで起動 (http://localhost:5173/Deadlock-DPSChecker/)
 npm test           # テスト
 npm run typecheck  # 型チェック
+npm run build      # dist/ に本番用ビルド
 ```
+
+## 公開
+
+`main` ブランチに push すると GitHub Actions (`.github/workflows/deploy.yml`) が
+型チェック・テスト・ビルドをして GitHub Pages に公開する。
+公開先: https://kyozoc.github.io/Deadlock-DPSChecker/
+
+初回のみリポジトリの Settings → Pages → Build and deployment → Source を「GitHub Actions」にする。
