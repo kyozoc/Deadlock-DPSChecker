@@ -9,7 +9,10 @@ import type {
   GameData,
   Hero,
   HeroStats,
+  CardProp,
+  InvestmentTier,
   Item,
+  ItemSection,
   ItemSlot,
   LocalizedText,
   PropMap,
@@ -28,6 +31,12 @@ export interface RawInputs {
   abilityData: Raw;
   itemData: Raw;
   soulUnlockData: Raw[];
+  /** deadlock-data の item-cards.json (アイテムのツールチップ構造) */
+  itemCards: Raw;
+  /** deadlock-data の ability-cards.json (ヒーローごとのアビリティのツールチップ構造) */
+  abilityCards: Raw;
+  /** deadlock-data の item-investment-data.json */
+  investmentData: Raw;
   /** deadlock-data の localizations/japanese.json */
   japanese: Record<string, string>;
   heroesVdata: Kv3Object;
@@ -44,6 +53,18 @@ const ITEM_SLOTS: Record<string, ItemSlot> = {
   Tech: 'spirit',
 };
 
+const INVESTMENT_SLOTS: Record<string, ItemSlot> = {
+  Weapon: 'weapon',
+  Vitality: 'vitality',
+  Spirit: 'spirit',
+};
+
+const SECTION_TYPES: Record<string, ItemSection['type']> = {
+  Innate: 'innate',
+  Passive: 'passive',
+  Active: 'active',
+};
+
 // deadlock-data 側で計算済みの表示用値。生データではないので捨てる
 const DERIVED_SCALING_KEYS = new Set(['DPS', 'SustainedDPS', 'PowerIncreases']);
 
@@ -57,6 +78,15 @@ export function buildGameData(input: RawInputs): GameData {
 
   const heroes: Record<string, Hero> = {};
   const abilities: Record<string, Ability> = {};
+  const labels = new LabelCollector(input.japanese);
+
+  const abilityCardByKey = new Map<string, Raw>();
+  for (const heroCards of Object.values<Raw>(input.abilityCards)) {
+    for (const slot of ['1', '2', '3', '4']) {
+      const card = heroCards?.[slot];
+      if (card?.Key) abilityCardByKey.set(card.Key, card);
+    }
+  }
 
   for (const key of Object.keys(input.heroData).sort()) {
     const raw = input.heroData[key];
@@ -73,7 +103,14 @@ export function buildGameData(input: RawInputs): GameData {
         warnings.push(`${key}: アビリティ ${abilityKey} が ability-data に無い`);
         continue;
       }
-      abilities[abilityKey] = buildAbility(abilityKey, key, rawAbility, input.japanese);
+      abilities[abilityKey] = buildAbility(
+        abilityKey,
+        key,
+        rawAbility,
+        abilityCardByKey.get(abilityKey),
+        input.japanese,
+        labels,
+      );
     }
   }
 
@@ -81,8 +118,19 @@ export function buildGameData(input: RawInputs): GameData {
   for (const key of Object.keys(input.itemData).sort()) {
     const raw = input.itemData[key];
     const slot = ITEM_SLOTS[raw.Slot];
-    if (raw.IsDisabled || !slot || typeof raw.Tier !== 'number') continue;
-    items[key] = buildItem(key, slot, raw, input.japanese);
+    // weapon_upgrade_t1 などの内部用エントリと Street Brawl 専用アイテムはショップに無いので除く
+    if (!key.startsWith('upgrade_') || raw.StreetBrawl || raw.IsDisabled) continue;
+    if (!slot || typeof raw.Tier !== 'number') continue;
+    items[key] = buildItem(key, slot, raw, input.itemCards[key], input.japanese, labels);
+  }
+
+  const investment = {} as Record<ItemSlot, InvestmentTier[]>;
+  for (const [name, slot] of Object.entries(INVESTMENT_SLOTS)) {
+    const tiers: Raw[] = input.investmentData?.ItemInvestments?.[name] ?? [];
+    investment[slot] = tiers
+      .map((t) => ({ souls: num(t.GoldThreshold), bonus: num(t.Bonus) }))
+      .sort((a, b) => a.souls - b.souls);
+    if (investment[slot].length === 0) warnings.push(`投資ボーナス (${name}) が無い`);
   }
 
   const soulUnlocks: SoulUnlock[] = input.soulUnlockData
@@ -100,7 +148,31 @@ export function buildGameData(input: RawInputs): GameData {
     abilities,
     items,
     soulUnlocks,
+    investment,
+    labels: labels.toRecord(),
   };
+}
+
+/** カードに出てくるプロパティの表示名を集める。日本語は `<Key>_label` のローカライズ */
+class LabelCollector {
+  private readonly labels = new Map<string, LocalizedText>();
+  constructor(private readonly japanese: Record<string, string>) {}
+
+  add(key: string, en: unknown): void {
+    if (this.labels.has(key)) return;
+    const text: LocalizedText = { en: typeof en === 'string' && en ? en : splitCamel(key) };
+    const ja = this.japanese[`${key}_label`];
+    if (ja) text.ja = ja;
+    this.labels.set(key, text);
+  }
+
+  toRecord(): Record<string, LocalizedText> {
+    return Object.fromEntries([...this.labels].sort(([a], [b]) => a.localeCompare(b)));
+  }
+}
+
+function splitCamel(key: string): string {
+  return key.replace(/([a-z])([A-Z])/g, '$1 $2');
 }
 
 function buildHero(key: string, raw: Raw, input: RawInputs, warnings: string[]): Hero {
@@ -253,19 +325,63 @@ function lookupWeaponInfo(
   return undefined;
 }
 
-function buildAbility(key: string, heroKey: string, raw: Raw, japanese: Record<string, string>): Ability {
+function buildAbility(
+  key: string,
+  heroKey: string,
+  raw: Raw,
+  rawCard: Raw | undefined,
+  japanese: Record<string, string>,
+  labels: LabelCollector,
+): Ability {
+  const card: CardProp[] = [];
+  const seen = new Set<string>();
+  for (const [sectionKey, section] of Object.entries<Raw>(rawCard ?? {})) {
+    if (!sectionKey.startsWith('Info') || !section) continue;
+    for (const p of [...(section.Main?.Props ?? []), ...(section.Alt ?? [])]) {
+      if (typeof p?.Key !== 'string' || seen.has(p.Key)) continue;
+      seen.add(p.Key);
+      card.push({ key: p.Key, kind: typeof p.Type === 'string' ? p.Type : null });
+      labels.add(p.Key, p.Name);
+    }
+  }
   return {
     key,
     name: localized(key, raw.Name, japanese),
     hero: heroKey,
     props: normalizeProps(raw),
     upgrades: Array.isArray(raw.Upgrades) ? raw.Upgrades.map((u: Raw) => normalizeProps(u)) : [],
+    card,
   };
 }
 
 const ITEM_META_KEYS = new Set(['Cost', 'Tier', 'MaxLevel']);
 
-function buildItem(key: string, slot: ItemSlot, raw: Raw, japanese: Record<string, string>): Item {
+function buildItem(
+  key: string,
+  slot: ItemSlot,
+  raw: Raw,
+  rawCard: Raw | undefined,
+  japanese: Record<string, string>,
+  labels: LabelCollector,
+): Item {
+  const sections: ItemSection[] = [];
+  for (const [sectionKey, section] of Object.entries<Raw>(rawCard ?? {})) {
+    if (!sectionKey.startsWith('Info') || !section) continue;
+    // 区分の無い説明だけの欄 (Type: null) は条件付きの効果として扱う
+    const type = SECTION_TYPES[section.Type] ?? 'passive';
+    const props = [...(section.Main ?? []), ...(section.Alt ?? [])]
+      .filter((p: Raw) => typeof p?.Key === 'string')
+      .map((p: Raw) => {
+        labels.add(p.Key, p.Name);
+        return {
+          key: p.Key as string,
+          kind: typeof p.Type === 'string' ? p.Type : null,
+          usage: sectionPropUsage(type, p.UsageFlags),
+        };
+      });
+    sections.push({ type, cooldown: typeof section.Cooldown === 'number' ? section.Cooldown : null, props });
+  }
+
   return {
     key,
     name: localized(key, raw.Name, japanese),
@@ -275,11 +391,21 @@ function buildItem(key: string, slot: ItemSlot, raw: Raw, japanese: Record<strin
     activation: typeof raw.Activation === 'string' ? raw.Activation : 'Passive',
     components: Array.isArray(raw.Components) ? raw.Components : [],
     isImbue: raw.IsImbue === true,
-    streetBrawl: raw.StreetBrawl === true,
     props: normalizeProps(raw, ITEM_META_KEYS),
+    sections,
     upgradeBonus: raw.PropertyUpgrades ? normalizeProps(raw.PropertyUpgrades) : null,
     corruptedBonus: raw.CorruptedUpgrades ? normalizeProps(raw.CorruptedUpgrades) : null,
   };
+}
+
+/**
+ * innate 区分は常に有効。passive / active 区分は条件付きだが、
+ * IntrinsicallyProvidedInAbility が付いたものは区分に関係なく常に有効。
+ */
+function sectionPropUsage(type: ItemSection['type'], flags: unknown): 'always' | 'conditional' | 'enemy' {
+  if (flags === 'ConditionallyEnemyApplied') return 'enemy';
+  if (type === 'innate' || flags === 'IntrinsicallyProvidedInAbility') return 'always';
+  return 'conditional';
 }
 
 /**

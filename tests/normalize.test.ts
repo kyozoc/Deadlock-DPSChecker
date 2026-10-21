@@ -49,12 +49,47 @@ function inputs(overrides: Partial<RawInputs> = {}): RawInputs {
       },
       upgrade_disabled: { Name: 'Old', Cost: 500, Tier: 1, Slot: 'Tech', IsDisabled: true },
       upgrade_no_tier: { Name: 'Hidden', Slot: 'Armor', IsDisabled: false },
+      upgrade_brawl: { Name: 'Brawl', Cost: 9999, Tier: 5, Slot: 'Tech', StreetBrawl: true },
+      weapon_upgrade_t1: { Name: 'weapon_upgrade_t1', Cost: 800, Tier: 1, Slot: 'Weapon' },
     },
     soulUnlockData: [
       { RequiredSouls: 200, PowerIncrease: true, AbilityPoints: 1 },
       { RequiredSouls: 0, AbilityUnlocks: 1 },
     ],
-    japanese: { hero_haze: 'ヘイズ', upgrade_toxic_bullets: 'トキシックバレット' },
+    itemCards: {
+      upgrade_toxic_bullets: {
+        Info1: { Type: 'Innate', Main: [], Alt: [{ Key: 'BonusHealth', Name: 'Bonus Health', Type: 'health' }] },
+        Info2: {
+          Type: 'Passive',
+          Cooldown: null,
+          Main: [{ Key: 'DotHealthPercent', Name: 'Bleed', Type: 'tech_damage' }],
+          Alt: [
+            { Key: 'HealAmpReceivePenaltyPercent', Type: 'healing', UsageFlags: 'ConditionallyEnemyApplied' },
+            { Key: 'BulletResist', Type: 'bullet_armor_up', UsageFlags: 'IntrinsicallyProvidedInAbility' },
+          ],
+        },
+      },
+    },
+    abilityCards: {
+      hero_haze: {
+        Name: 'Haze',
+        '1': {
+          Key: 'ability_sleep_dagger',
+          Info1: { Main: { Props: [{ Key: 'Damage', Name: 'Damage', Type: 'tech_damage' }] }, Alt: [] },
+        },
+      },
+    },
+    investmentData: {
+      ItemInvestments: {
+        Weapon: [
+          { GoldThreshold: 1600, Bonus: 12 },
+          { GoldThreshold: 800, Bonus: 9 },
+        ],
+        Vitality: [{ GoldThreshold: 800, Bonus: 9 }],
+        Spirit: [{ GoldThreshold: 800, Bonus: 7 }],
+      },
+    },
+    japanese: { hero_haze: 'ヘイズ', upgrade_toxic_bullets: 'トキシックバレット', Damage_label: 'ダメージ' },
     heroesVdata: {
       hero_haze: {
         m_HeroID: 13,
@@ -133,7 +168,9 @@ describe('buildGameData', () => {
       hero: 'hero_haze',
       props: { Damage: { value: 65, scale: [{ type: 'spirit', value: 2.2 }] } },
       upgrades: [{ AbilityCooldown: -17 }],
+      card: [{ key: 'Damage', kind: 'tech_damage' }],
     });
+    expect(data.labels.Damage).toEqual({ en: 'Damage', ja: 'ダメージ' });
   });
 
   it('keeps shop items only and maps slots', () => {
@@ -147,6 +184,31 @@ describe('buildGameData', () => {
       upgradeBonus: { DotHealthPercent: 0.7 },
       corruptedBonus: null,
     });
+  });
+
+  it('classifies item tooltip sections into always-on, conditional and enemy effects', () => {
+    const sections = buildGameData(inputs()).items.upgrade_toxic_bullets!.sections;
+    expect(sections).toEqual([
+      { type: 'innate', cooldown: null, props: [{ key: 'BonusHealth', kind: 'health', usage: 'always' }] },
+      {
+        type: 'passive',
+        cooldown: null,
+        props: [
+          { key: 'DotHealthPercent', kind: 'tech_damage', usage: 'conditional' },
+          { key: 'HealAmpReceivePenaltyPercent', kind: 'healing', usage: 'enemy' },
+          { key: 'BulletResist', kind: 'bullet_armor_up', usage: 'always' },
+        ],
+      },
+    ]);
+  });
+
+  it('sorts investment tiers by souls', () => {
+    const data = buildGameData(inputs());
+    expect(data.investment.weapon).toEqual([
+      { souls: 800, bonus: 9 },
+      { souls: 1600, bonus: 12 },
+    ]);
+    expect(data.investment.spirit).toEqual([{ souls: 800, bonus: 7 }]);
   });
 
   it('sorts soul unlocks by souls', () => {

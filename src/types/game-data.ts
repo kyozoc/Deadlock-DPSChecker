@@ -12,6 +12,17 @@ export interface GameData {
   items: Record<string, Item>;
   /** ソウル数ごとの解放内容 (ブーン・アビリティポイント)。昇順 */
   soulUnlocks: SoulUnlock[];
+  /** アイテムのスロット別投資ボーナス (その系統のアイテムに使ったソウルの合計で決まる) */
+  investment: Record<ItemSlot, InvestmentTier[]>;
+  /** プロパティ名 (Damage, BulletResist など) の表示名 */
+  labels: Record<string, LocalizedText>;
+}
+
+export interface InvestmentTier {
+  /** この系統のアイテムに使ったソウルの合計がこれ以上なら */
+  souls: number;
+  /** weapon: 武器ダメージ +%, vitality: 基礎体力 +%, spirit: スピリットパワー + */
+  bonus: number;
 }
 
 export interface Meta {
@@ -152,6 +163,14 @@ export interface Ability {
   props: PropMap;
   /** スキルポイントによる強化 T1〜T3。基礎値への加算 (multiply なら乗算) */
   upgrades: PropMap[];
+  /** ツールチップに出るプロパティと種類 (tech_damage / bullet_damage / duration など) */
+  card: CardProp[];
+}
+
+export interface CardProp {
+  key: string;
+  /** 'tech_damage' | 'bullet_damage' | 'damage' | 'melee_damage' | 'duration' | 'bullet_armor_up' など */
+  kind: string | null;
 }
 
 export type ItemSlot = 'weapon' | 'vitality' | 'spirit';
@@ -167,13 +186,28 @@ export interface Item {
   /** 合成元アイテムのキー */
   components: string[];
   isImbue: boolean;
-  /** Street Brawl 専用 */
-  streetBrawl: boolean;
   props: PropMap;
+  /** ツールチップの区分ごとの効果 */
+  sections: ItemSection[];
   /** アイテム強化時の加算値 */
   upgradeBonus: PropMap | null;
   /** Corrupted 版の加算値 */
   corruptedBonus: PropMap | null;
+}
+
+export interface ItemSection {
+  /** innate: 持っているだけで常に有効 / passive: 条件付きの効果 / active: 使用時の効果 */
+  type: 'innate' | 'passive' | 'active';
+  cooldown: number | null;
+  props: SectionProp[];
+}
+
+export interface SectionProp extends CardProp {
+  /**
+   * always: 常に有効 / conditional: 条件を満たすと自分に付く /
+   * enemy: 条件を満たすと敵に付く (耐性低下など)
+   */
+  usage: 'always' | 'conditional' | 'enemy';
 }
 
 export interface SoulUnlock {
