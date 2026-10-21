@@ -14,6 +14,9 @@ DPS計算サイトで使うヒーロー・武器・スキル・アイテムの�
 基本方針: **ビルド時に JSON を取得して静的ファイルとしてサイトに同梱する**（実行時に外部APIへ依存しない）。
 パッチが来たら取得スクリプトを再実行して更新する。
 
+実装: `npm run data:fetch`（`scripts/fetch-data.ts`）が 1 と 2 を取得し、計算に必要な項目だけを
+`src/data/game-data.json`（型: `src/types/game-data.ts`）に書き出す。ヘッドショット倍率は 2 の vdata から補完している。
+
 ---
 
 ## 1. deadlock-wiki/deadlock-data（第一候補）
