@@ -99,7 +99,7 @@ export function App() {
         <section className="panel notes">
           <h2>計算について</h2>
           <ul>
-            <li>データは Deadlock Wiki (deadlock-data) とゲームファイル (SteamDB の GameTracking) から取得しています。アイコンは deadlock-open-assets のものです。</li>
+            <li>データは Deadlock Wiki (deadlock-data) とゲームファイル (SteamDB の GameTracking) から取得しています。アイコンは deadlock-api (最新ビルドから抽出) のものです。</li>
             <li>1発のダメージ = (基礎 + レベル成長) × (1 + 武器ダメージ%) × 距離減衰 × (1 − 耐性) × ヘッドショット倍率。</li>
             <li>耐性は複数あると掛け算で重なる (30% + 30% → 51%) 、耐性低下も同じ式で入るとして計算しています。</li>
             <li>アイテムの「常時」効果は自動で入ります。発動・命中時などの条件付き効果は「効果ON」にしたものだけ入ります。</li>

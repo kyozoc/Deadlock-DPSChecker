@@ -21,8 +21,9 @@ npm run images:fetch            # アイコンを public/icons/ に取得 (data:
 GitHub Actions (`.github/workflows/update-data.yml`) が毎日これを実行し、
 変更があればテストを通したうえで main に commit して公開し直す。
 
-アイコンは [deadlock-open-assets](https://github.com/0xThiagoAmaral/deadlock-open-assets) (MIT) から取得している。
-新しいヒーローなど画像が無いものは頭文字で表示する。
+アイコンは最新のゲームビルドから毎日抽出されている deadlock-api の画像 CDN から取得し、
+そこに無いものだけ [deadlock-open-assets](https://github.com/0xThiagoAmaral/deadlock-open-assets) (MIT) で補う。
+どちらにも無いものは頭文字で表示する。deadlock-api に繋がらない環境では古い画像で上書きしないよう中止する。
 
 取得元のビルドがずれている・欠損があるなどの問題は `meta.warnings` と実行時のログに出る。
 

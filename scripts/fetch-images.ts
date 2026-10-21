@@ -4,23 +4,30 @@
  *   npm run data:fetch      # 先に実行 (.cache/ の vdata を使う)
  *   npm run images:fetch
  *
- * 画像の取得元は 0xThiagoAmaral/deadlock-open-assets (MIT, ゲームファイルから抽出した PNG)。
- * vdata に書かれた画像パスのファイル名で突き合わせる。見つからないものは
- * src/data/icons.json に載らず、サイト側では頭文字で代用する。
+ * 画像は vdata に書かれた画像パスから探す。
+ *   1. deadlock-api の画像 CDN (最新のゲームビルドから毎日抽出されている)
+ *   2. 0xThiagoAmaral/deadlock-open-assets (MIT, 2026年6月時点の抽出。1 に無いものだけ)
+ * どちらにも無いものは src/data/icons.json に載らず、サイト側では頭文字で代用する。
+ *
+ * deadlock-api に1枚も繋がらなかったときは古い画像で上書きしないよう失敗する
+ * (--allow-old-images で 2 だけでも続行)。
  */
 import { execFileSync } from 'node:child_process';
 import { existsSync } from 'node:fs';
-import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp, { type ResizeOptions } from 'sharp';
 import type { GameData } from '../src/types/game-data.ts';
+import { deadlockApiUrl, HERO_ANCHORS, ITEM_ANCHORS } from './lib/image-paths.ts';
 import { isObject, parseKv3, type Kv3Object } from './lib/kv3.ts';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const CACHE_DIR = join(ROOT, '.cache');
 const IMAGE_CACHE = join(CACHE_DIR, 'images');
 const OUT_DIR = join(ROOT, 'public/icons');
+// 途中で失敗しても今の画像を壊さないよう、別の場所に作ってから差し替える
+const TMP_DIR = join(ROOT, 'public/icons.tmp');
 const MANIFEST = join(ROOT, 'src/data/icons.json');
 
 const REPO = '0xThiagoAmaral/deadlock-open-assets';
@@ -75,7 +82,17 @@ function pick(index: Map<string, string>, candidates: (string | undefined)[]): s
   return undefined;
 }
 
-async function download(path: string): Promise<Buffer> {
+type Source = { from: 'deadlock-api'; url: string } | { from: 'open-assets'; path: string };
+
+
+async function download(source: Source): Promise<Buffer> {
+  if (source.from === 'deadlock-api') {
+    // 同じ URL のままゲームの更新で絵が変わるのでキャッシュしない
+    const res = await fetch(source.url);
+    if (!res.ok) throw new Error(`${source.url}: HTTP ${res.status}`);
+    return Buffer.from(await res.arrayBuffer());
+  }
+  const path = source.path;
   const cached = join(IMAGE_CACHE, COMMIT, path);
   if (existsSync(cached)) return readFile(cached);
   const res = await fetch(`https://media.githubusercontent.com/media/${REPO}/${COMMIT}/${path}`);
@@ -101,20 +118,28 @@ async function main(): Promise<void> {
   const items = indexByBasename(repoImages, 'images/deadlock/items/');
   const abilities = indexByBasename(repoImages, 'images/deadlock/abilities/');
 
-  const jobs: { kind: Kind; key: string; path: string }[] = [];
+  const jobs: { kind: Kind; key: string; sources: Source[] }[] = [];
   const missing: Record<Kind, string[]> = { heroes: [], heroCards: [], items: [], abilities: [] };
-  const add = (kind: Kind, key: string, path: string | undefined) =>
-    path ? jobs.push({ kind, key, path }) : missing[kind].push(key);
+  const add = (kind: Kind, key: string, urls: (string | undefined)[], fallback: string | undefined) => {
+    const sources: Source[] = [
+      ...[...new Set(urls)].filter((u): u is string => !!u).map((url) => ({ from: 'deadlock-api' as const, url })),
+      ...(fallback ? [{ from: 'open-assets' as const, path: fallback }] : []),
+    ];
+    if (sources.length) jobs.push({ kind, key, sources });
+    else missing[kind].push(key);
+  };
 
   for (const hero of Object.values(data.heroes)) {
     // 変身後フォームは変身前の画像を使う
     const baseKey = hero.key.replace(/_transformed$/, '');
-    const card = basename(imageOf(heroesVdata, baseKey, 'm_strIconHeroCard')).replace(/_card$/, '');
-    const small = basename(imageOf(heroesVdata, baseKey, 'm_strIconImageSmall')).replace(/_sm$/, '');
+    const cardPath = imageOf(heroesVdata, baseKey, 'm_strIconHeroCard');
+    const smallPath = imageOf(heroesVdata, baseKey, 'm_strIconImageSmall');
+    const card = basename(cardPath).replace(/_card$/, '');
+    const small = basename(smallPath).replace(/_sm$/, '');
     const baseName = data.heroes[baseKey]?.name.en ?? hero.name.en;
     const candidates = [slug(baseName), card, small, baseKey.replace(/^hero_/, '')];
-    add('heroes', hero.key, pick(circles, candidates));
-    add('heroCards', hero.key, pick(cards, candidates));
+    add('heroes', hero.key, [deadlockApiUrl(smallPath, HERO_ANCHORS)], pick(circles, candidates));
+    add('heroCards', hero.key, [deadlockApiUrl(cardPath, HERO_ANCHORS)], pick(cards, candidates));
   }
   const allImages = new Set(repoImages);
   for (const item of Object.values(data.items)) {
@@ -130,33 +155,52 @@ async function main(): Promise<void> {
     add(
       'items',
       item.key,
+      vdataPaths.map((p) => deadlockApiUrl(p, ITEM_ANCHORS)),
       exact ?? pick(items, [...vdataPaths.map(basename), slug(item.name.en), item.key.replace(/^upgrade_/, '')]),
     );
   }
   for (const ability of Object.values(data.abilities)) {
-    const image = basename(imageOf(abilitiesVdata, ability.key, 'm_strAbilityImage'));
-    add('abilities', ability.key, pick(abilities, [image]));
+    const imagePath = imageOf(abilitiesVdata, ability.key, 'm_strAbilityImage');
+    add('abilities', ability.key, [deadlockApiUrl(imagePath, ITEM_ANCHORS)], pick(abilities, [basename(imagePath)]));
   }
 
-  await rm(OUT_DIR, { recursive: true, force: true });
-  for (const { dir } of Object.values(OUTPUT)) await mkdir(join(OUT_DIR, dir), { recursive: true });
+  await rm(TMP_DIR, { recursive: true, force: true });
+  for (const { dir } of Object.values(OUTPUT)) await mkdir(join(TMP_DIR, dir), { recursive: true });
 
   const done: Record<Kind, string[]> = { heroes: [], heroCards: [], items: [], abilities: [] };
+  const fromSource = { 'deadlock-api': 0, 'open-assets': 0 };
+  const old: string[] = [];
   const queue = [...jobs];
   const worker = async () => {
     for (let job = queue.shift(); job; job = queue.shift()) {
-      try {
-        const png = await download(job.path);
-        const out = join(OUT_DIR, OUTPUT[job.kind].dir, `${job.key}.webp`);
-        await sharp(png).resize(OUTPUT[job.kind].resize).webp({ quality: 82 }).toFile(out);
-        done[job.kind].push(job.key);
-      } catch (err) {
-        console.warn(`  warning: ${job.kind}/${job.key}: ${(err as Error).message}`);
-        missing[job.kind].push(job.key);
+      let saved = false;
+      for (const source of job.sources) {
+        try {
+          const png = await download(source);
+          const out = join(TMP_DIR, OUTPUT[job.kind].dir, `${job.key}.webp`);
+          await sharp(png).resize(OUTPUT[job.kind].resize).webp({ quality: 82 }).toFile(out);
+          done[job.kind].push(job.key);
+          fromSource[source.from]++;
+          if (source.from === 'open-assets') old.push(`${job.kind}/${job.key}`);
+          saved = true;
+          break;
+        } catch {
+          // 次の取得元を試す
+        }
       }
+      if (!saved) missing[job.kind].push(job.key);
     }
   };
   await Promise.all(Array.from({ length: 8 }, worker));
+
+  if (fromSource['deadlock-api'] === 0 && !process.argv.includes('--allow-old-images')) {
+    await rm(TMP_DIR, { recursive: true, force: true });
+    throw new Error('deadlock-api の画像に1枚も繋がらなかったので中止した (古い画像で上書きしないため)');
+  }
+  await rm(OUT_DIR, { recursive: true, force: true });
+  await rename(TMP_DIR, OUT_DIR);
+  console.log(`取得元: deadlock-api ${fromSource['deadlock-api']} 枚 / deadlock-open-assets ${fromSource['open-assets']} 枚`);
+  if (old.length) console.log(`  deadlock-open-assets から: ${old.sort().join(', ')}`);
 
   const manifest = Object.fromEntries(
     (Object.keys(done) as Kind[]).map((k) => [k, done[k].sort()]),

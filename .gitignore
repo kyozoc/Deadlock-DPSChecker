@@ -2,3 +2,4 @@ node_modules/
 dist/
 # 取得スクリプトの生データキャッシュ
 .cache/
+public/icons.tmp/
