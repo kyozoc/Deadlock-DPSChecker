@@ -11,6 +11,7 @@ function inputs(overrides: Partial<RawInputs> = {}): RawInputs {
         IsDisabled: false,
         InDevelopment: false,
         MaxHealth: 730,
+        CritDamageBonusPercent: -45,
         BoundAbilities: { '1': { Key: 'ability_sleep_dagger' } },
         LevelScaling: { BulletDamage: 0.143, PowerIncreases: 1, DPS: 1.36 },
         SpiritScaling: { ClipSize: 0.5, SustainedDPS: 0.25 },
@@ -26,6 +27,7 @@ function inputs(overrides: Partial<RawInputs> = {}): RawInputs {
         },
       },
       hero_wip: { Name: 'WIP', IsSelectable: true, InDevelopment: true },
+      hero_form: { Name: 'Form', IsSelectable: true, CritDamageReceivedPercent: 20 },
     },
     abilityData: {
       ability_sleep_dagger: {
@@ -54,7 +56,11 @@ function inputs(overrides: Partial<RawInputs> = {}): RawInputs {
     ],
     japanese: { hero_haze: 'ヘイズ', upgrade_toxic_bullets: 'トキシックバレット' },
     heroesVdata: {
-      hero_haze: { m_HeroID: 13, m_mapBoundAbilities: { ESlot_Weapon_Primary: 'citadel_weapon_haze_set' } },
+      hero_haze: {
+        m_HeroID: 13,
+        m_mapStartingStats: { ECritDamageBonusScale: 0.55, ECritDamageReceivedScale: 0.45 },
+        m_mapBoundAbilities: { ESlot_Weapon_Primary: 'citadel_weapon_haze_set' },
+      },
     },
     abilitiesVdata: {
       hero_weapon_base: {
@@ -74,12 +80,18 @@ function inputs(overrides: Partial<RawInputs> = {}): RawInputs {
 describe('buildGameData', () => {
   it('keeps only playable heroes and attaches localized names and hero id', () => {
     const data = buildGameData(inputs());
-    expect(Object.keys(data.heroes)).toEqual(['hero_haze']);
+    expect(Object.keys(data.heroes)).toEqual(['hero_form', 'hero_haze']);
     const haze = data.heroes.hero_haze!;
     expect(haze.id).toBe(13);
     expect(haze.name).toEqual({ en: 'Haze', ja: 'ヘイズ' });
     expect(haze.stats.maxHealth).toBe(730);
     expect(haze.stats.bulletResist).toBe(0);
+  });
+
+  it('reads headshot scales from vdata, falling back to deadlock-data percents', () => {
+    const data = buildGameData(inputs());
+    expect(data.heroes.hero_haze!.stats).toMatchObject({ critBonusScale: 0.55, critReceivedScale: 0.45 });
+    expect(data.heroes.hero_form!.stats).toMatchObject({ critBonusScale: 1, critReceivedScale: 0.8 });
   });
 
   it('drops derived DPS values from scaling tables', () => {

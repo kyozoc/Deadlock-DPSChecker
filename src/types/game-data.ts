@@ -71,10 +71,13 @@ export interface HeroStats {
   bulletResist: number;
   spiritResist: number;
   meleeResist: number;
-  /** ヘッドショットダメージ補正 (%) */
-  critDamageBonusPercent: number;
-  /** 被ヘッドショットダメージ補正 (%) */
-  critDamageReceivedPercent: number;
+  /**
+   * 与ヘッドショットの倍率 (vdata の ECritDamageBonusScale)。1 が標準、Drifter は 0.55。
+   * 計算式は src/calc/headshot.ts
+   */
+  critBonusScale: number;
+  /** 被ヘッドショットの倍率 (vdata の ECritDamageReceivedScale)。1 が標準、Gigawatt は 0.45 */
+  critReceivedScale: number;
   lightMeleeDamage: number;
   heavyMeleeDamage: number;
   bulletLifesteal: number;
@@ -116,7 +119,10 @@ export interface Falloff {
   bias: number;
 }
 
-/** ヘッドショット倍率。距離 startRange〜endRange で bonusStart → bonusEnd に変化 */
+/**
+ * 武器側のヘッドショット倍率。距離 startRange〜endRange で bonusStart → bonusEnd に変化。
+ * ほぼ全武器 1.65 (Ratking のみ 1.35)。ヒーローごとの差は HeroStats.critBonusScale 側にある
+ */
 export interface Crit {
   canCrit: boolean;
   bonusStart: number;

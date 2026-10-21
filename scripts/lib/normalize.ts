@@ -131,8 +131,7 @@ function buildHero(key: string, raw: Raw, input: RawInputs, warnings: string[]):
     bulletResist: num(raw.BulletResist),
     spiritResist: num(raw.TechResist),
     meleeResist: num(raw.MeleeResist),
-    critDamageBonusPercent: num(raw.CritDamageBonusPercent),
-    critDamageReceivedPercent: num(raw.CritDamageReceivedPercent),
+    ...readCritScales(vdataHero, raw),
     lightMeleeDamage: num(raw.LightMeleeDamage),
     heavyMeleeDamage: num(raw.HeavyMeleeDamage),
     bulletLifesteal: num(raw.BulletLifesteal),
@@ -153,6 +152,23 @@ function buildHero(key: string, raw: Raw, input: RawInputs, warnings: string[]):
     weapon,
     altFire,
     abilities,
+  };
+}
+
+/**
+ * ヒーローごとのヘッドショット補正。vdata の値をそのまま使い、vdata に無いヒーロー
+ * (deadbot が作る変身後フォームなど) は deadlock-data の % 表記から戻す。
+ * deadbot の変換: CritDamageBonusPercent = (scale - 1) * 100, CritDamageReceivedPercent = (1 - scale) * 100
+ */
+function readCritScales(
+  vdataHero: Kv3Value | undefined,
+  raw: Raw,
+): Pick<HeroStats, 'critBonusScale' | 'critReceivedScale'> {
+  const stats = isObject(vdataHero) ? vdataHero.m_mapStartingStats : undefined;
+  const fromVdata = (name: string) => (isObject(stats) && typeof stats[name] === 'number' ? stats[name] : undefined);
+  return {
+    critBonusScale: fromVdata('ECritDamageBonusScale') ?? 1 + num(raw.CritDamageBonusPercent) / 100,
+    critReceivedScale: fromVdata('ECritDamageReceivedScale') ?? 1 - num(raw.CritDamageReceivedPercent) / 100,
   };
 }
 
