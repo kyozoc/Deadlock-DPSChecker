@@ -1,7 +1,7 @@
 {
   "meta": {
-    "gameVersion": 6817,
-    "vdataVersion": 6817,
+    "gameVersion": 6819,
+    "vdataVersion": 6819,
     "warnings": [
       "hero_werewolf_transformed: 武器のヘッドショット倍率が vdata から取れない"
     ]
