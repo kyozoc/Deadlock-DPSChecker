@@ -1,7 +1,7 @@
 {
   "meta": {
-    "gameVersion": 6819,
-    "vdataVersion": 6819,
+    "gameVersion": 6821,
+    "vdataVersion": 6821,
     "warnings": [
       "hero_werewolf_transformed: 武器のヘッドショット倍率が vdata から取れない"
     ]
@@ -15003,7 +15003,8 @@
     "ability_nurse_leech_therapy": {
       "key": "ability_nurse_leech_therapy",
       "name": {
-        "en": "Leech Therapy"
+        "en": "Leech Therapy",
+        "ja": "ヒル治療"
       },
       "hero": "hero_nurse",
       "props": {
@@ -15170,7 +15171,8 @@
     "ability_nurse_adrenaline_rush": {
       "key": "ability_nurse_adrenaline_rush",
       "name": {
-        "en": "Wretched Vapors"
+        "en": "Wretched Vapors",
+        "ja": "カースドヴェイパー"
       },
       "hero": "hero_nurse",
       "props": {
@@ -15261,7 +15263,8 @@
     "ability_nurse_healing_needles": {
       "key": "ability_nurse_healing_needles",
       "name": {
-        "en": "Healing Needles"
+        "en": "Healing Needles",
+        "ja": "ヒーリングニードル"
       },
       "hero": "hero_nurse",
       "props": {
@@ -15356,7 +15359,8 @@
     "ability_nurse_fear": {
       "key": "ability_nurse_fear",
       "name": {
-        "en": "Lurking Terrors"
+        "en": "Lurking Terrors",
+        "ja": "クリーピングテラー"
       },
       "hero": "hero_nurse",
       "props": {
@@ -34376,7 +34380,8 @@
       "ja": "チャージショット範囲"
     },
     "ChargePercentPerSecondPerLeech": {
-      "en": "Charge Per Leech"
+      "en": "Charge Per Leech",
+      "ja": "チャージ／ヒル"
     },
     "CheckmateThreshold": {
       "en": "Checkmate Threshold",
@@ -34455,10 +34460,12 @@
       "ja": "クールダウンのコピー"
     },
     "CrashDuration": {
-      "en": "Crash Duration"
+      "en": "Crash Duration",
+      "ja": "クラッシュの継続時間"
     },
     "CrashTimeScalePenaltyPercent": {
-      "en": "Crash Slowdown"
+      "en": "Crash Slowdown",
+      "ja": "クラッシュ時のスピード低下"
     },
     "CritBuildup": {
       "en": "Buildup Per Headshot",
@@ -34604,7 +34611,8 @@
       "ja": "解消する変換ダメージ"
     },
     "DeferredDamageBonusPercent": {
-      "en": "Extra Damage Taken"
+      "en": "Extra Damage Taken",
+      "ja": "受けた追加ダメージ"
     },
     "DeferredDamageDuration": {
       "en": "Deferred Damage Duration",
@@ -34740,7 +34748,8 @@
       "ja": "減衰する移動速度"
     },
     "FearDurationPerLeechStack": {
-      "en": "Fear Duration Per Leech"
+      "en": "Fear Duration Per Leech",
+      "ja": "恐慌状態の継続時間／ヒル"
     },
     "FervorFireRate": {
       "en": "Fervor Fire Rate",
@@ -34766,7 +34775,8 @@
       "ja": "発射速度／キル"
     },
     "FireRatePerLeechPickup": {
-      "en": "Fire Rate Per Leech"
+      "en": "Fire Rate Per Leech",
+      "ja": "発射速度／ヒル"
     },
     "FireRatePerStack": {
       "en": "Fire Rate per Stack",
@@ -34855,7 +34865,8 @@
       "ja": "ヘッドショット追加ダメージ"
     },
     "HeadshotHealBonusPercent": {
-      "en": "Headshot Heal Bonus"
+      "en": "Headshot Heal Bonus",
+      "ja": "ヘッドショット 回復ボーナス"
     },
     "HealAmount": {
       "en": "Heal Amount",
@@ -34951,7 +34962,8 @@
       "ja": "回復範囲"
     },
     "HealRegen": {
-      "en": "Heal Per Shot"
+      "en": "Heal Per Shot",
+      "ja": "回復／注射器"
     },
     "HealthBoostDuration": {
       "en": "Health Boost Duration"
@@ -35113,13 +35125,16 @@
       "en": "Damage"
     },
     "LeechCrawlRadius": {
-      "en": "Leech Crawl Range"
+      "en": "Leech Crawl Range",
+      "ja": "ヒルの移動範囲"
     },
     "LeechEatDurationPerSecond": {
-      "en": "Buff Duration Drain Per Second"
+      "en": "Buff Duration Drain Per Second",
+      "ja": "バフの継続時間吸収量／秒"
     },
     "LeechStaminaDrain": {
-      "en": "Stamina Drain"
+      "en": "Stamina Drain",
+      "ja": "スタミナ吸収"
     },
     "LifeDrainHealthMult": {
       "en": "Damage to Heal",
@@ -35288,7 +35303,8 @@
       "ja": "自傷ダメージ"
     },
     "MaxLeechBonusStacks": {
-      "en": "Max Leech Stacks"
+      "en": "Max Leech Stacks",
+      "ja": "ヒルの最大スタック数"
     },
     "MaxLifetime": {
       "en": "Lifetime",
@@ -35716,7 +35732,8 @@
       "ja": "ダメージ回復"
     },
     "RegenPerLeechPickup": {
-      "en": "Health Regen Per Leech"
+      "en": "Health Regen Per Leech",
+      "ja": "HPリジェネ／ヒル"
     },
     "ReloadSpeedMultipler": {
       "en": "Reload Speed Multipler",
@@ -35754,7 +35771,8 @@
       "en": "Ricochet Targets"
     },
     "RushTimeScaleBonusPercent": {
-      "en": "Rush Speed"
+      "en": "Rush Speed",
+      "ja": "ラッシュ時のスピード上昇"
     },
     "ScorchDamage": {
       "en": "Burst Damage",
@@ -35921,7 +35939,8 @@
       "ja": "スピリットパワー"
     },
     "SpiritPowerPerLeechStack": {
-      "en": "Spirit Power Per Leech"
+      "en": "Spirit Power Per Leech",
+      "ja": "スピリットパワー／ヒル"
     },
     "SpottedRadius": {
       "en": "Spot Radius",
@@ -35962,7 +35981,8 @@
       "ja": "スタミナ回復"
     },
     "StaminaRestorePerHit": {
-      "en": "Stamina Per Shot"
+      "en": "Stamina Per Shot",
+      "ja": "スタミナ／注射器"
     },
     "StatusEffectDisarmed": {
       "en": "Status Effect Disarmed"
