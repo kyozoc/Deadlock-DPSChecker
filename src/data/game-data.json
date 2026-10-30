@@ -1,7 +1,7 @@
 {
   "meta": {
-    "gameVersion": 6821,
-    "vdataVersion": 6821,
+    "gameVersion": 6833,
+    "vdataVersion": 6833,
     "warnings": [
       "hero_werewolf_transformed: 武器のヘッドショット倍率が vdata から取れない"
     ]
@@ -116,7 +116,7 @@
       "spiritScaling": {},
       "weapon": {
         "key": "citadel_weapon_bull_set",
-        "bulletDamage": 3.6,
+        "bulletDamage": 3.78,
         "bulletsPerShot": 9,
         "roundsPerSecond": 1.5873,
         "bulletsPerBurst": 1,
@@ -149,8 +149,8 @@
           "Attribute_EWeaponAttribute_CloseRange"
         ],
         "reference": {
-          "dps": 51.429,
-          "sustainedDps": 30.542
+          "dps": 54,
+          "sustainedDps": 32.069
         }
       },
       "altFire": null,
@@ -247,7 +247,7 @@
         "en": "Paige",
         "ja": "ペイジ"
       },
-      "type": "Mystic",
+      "type": "Healer",
       "stats": {
         "maxHealth": 680,
         "baseHealthRegen": 2,
@@ -263,7 +263,7 @@
         "sprintSpeed": 3.5
       },
       "levelScaling": {
-        "BulletDamage": 0.52,
+        "BulletDamage": 0.61,
         "MaxHealth": 31,
         "TechPower": 1.1,
         "LightMeleeDamage": 1.2,
@@ -274,7 +274,7 @@
       },
       "weapon": {
         "key": "citadel_weapon_bookworm_set2",
-        "bulletDamage": 35,
+        "bulletDamage": 32,
         "bulletsPerShot": 1,
         "roundsPerSecond": 2,
         "bulletsPerBurst": 1,
@@ -310,8 +310,8 @@
           "Attribute_EWeaponAttribute_LongRange"
         ],
         "reference": {
-          "dps": 70,
-          "sustainedDps": 51.579
+          "dps": 64,
+          "sustainedDps": 47.158
         }
       },
       "altFire": null,
@@ -336,7 +336,7 @@
         "bulletResist": 0,
         "spiritResist": 0,
         "meleeResist": 0,
-        "critBonusScale": 1,
+        "critBonusScale": 0.8,
         "critReceivedScale": 1,
         "lightMeleeDamage": 50,
         "heavyMeleeDamage": 116,
@@ -356,7 +356,7 @@
       },
       "weapon": {
         "key": "citadel_weapon_chessmaster_shotgun",
-        "bulletDamage": 30,
+        "bulletDamage": 25,
         "bulletsPerShot": 1,
         "roundsPerSecond": 2,
         "bulletsPerBurst": 1,
@@ -392,8 +392,8 @@
           "Attribute_EWeaponAttribute_LongRange"
         ],
         "reference": {
-          "dps": 60,
-          "sustainedDps": 34.286
+          "dps": 50,
+          "sustainedDps": 28.571
         }
       },
       "altFire": null,
@@ -671,7 +671,7 @@
       "spiritScaling": {},
       "weapon": {
         "key": "citadel_weapon_drifter_set",
-        "bulletDamage": 19.5,
+        "bulletDamage": 20.1,
         "bulletsPerShot": 3,
         "roundsPerSecond": 2.2676,
         "bulletsPerBurst": 1,
@@ -704,8 +704,8 @@
           "Attribute_EWeaponAttribute_CloseRange"
         ],
         "reference": {
-          "dps": 44.218,
-          "sustainedDps": 30.248
+          "dps": 45.579,
+          "sustainedDps": 31.179
         }
       },
       "altFire": null,
@@ -723,7 +723,7 @@
         "en": "Dynamo",
         "ja": "ダイナモ"
       },
-      "type": "Mystic",
+      "type": "Healer",
       "stats": {
         "maxHealth": 880,
         "baseHealthRegen": 1.75,
@@ -802,7 +802,7 @@
         "en": "Rem",
         "ja": "レム"
       },
-      "type": "Mystic",
+      "type": "Healer",
       "stats": {
         "maxHealth": 680,
         "baseHealthRegen": 2,
@@ -1434,7 +1434,7 @@
         "en": "Infernus",
         "ja": "インファーナス"
       },
-      "type": "Marksman",
+      "type": "Mystic",
       "stats": {
         "maxHealth": 830,
         "baseHealthRegen": 2,
@@ -1511,7 +1511,7 @@
         "en": "Kelvin",
         "ja": "ケルビン"
       },
-      "type": "Brawler",
+      "type": "Healer",
       "stats": {
         "maxHealth": 880,
         "baseHealthRegen": 1,
@@ -1606,9 +1606,9 @@
         "sprintSpeed": 1.6
       },
       "levelScaling": {
-        "BulletDamage": 0.0847,
+        "BulletDamage": 0.0881,
         "MaxHealth": 65,
-        "TechPower": 1.1,
+        "TechPower": 0.6,
         "LightMeleeDamage": 1.58,
         "HeavyMeleeDamage": 3.6656
       },
@@ -1991,11 +1991,11 @@
         "lightMeleeDamage": 50,
         "heavyMeleeDamage": 116,
         "bulletLifesteal": 8,
-        "maxMoveSpeed": 7,
+        "maxMoveSpeed": 6.7,
         "sprintSpeed": 2.2
       },
       "levelScaling": {
-        "BulletDamage": 0.054,
+        "BulletDamage": 0.052,
         "MaxHealth": 35,
         "TechPower": 1.1,
         "LightMeleeDamage": 1.58,
@@ -2056,7 +2056,7 @@
         "en": "Nurse Harrow",
         "ja": "ナース・ハロウ"
       },
-      "type": "Marksman",
+      "type": "Healer",
       "stats": {
         "maxHealth": 730,
         "baseHealthRegen": 0,
@@ -2081,7 +2081,7 @@
       "spiritScaling": {},
       "weapon": {
         "key": "citadel_weapon_nurse_set",
-        "bulletDamage": 14.858,
+        "bulletDamage": 13.372,
         "bulletsPerShot": 1,
         "roundsPerSecond": 2.6316,
         "bulletsPerBurst": 1,
@@ -2114,8 +2114,8 @@
           "Attribute_EWeaponAttribute_LongRange"
         ],
         "reference": {
-          "dps": 39.1,
-          "sustainedDps": 26.881
+          "dps": 35.19,
+          "sustainedDps": 24.193
         }
       },
       "altFire": null,
@@ -2133,7 +2133,7 @@
         "en": "Grey Talon",
         "ja": "グレイタロン"
       },
-      "type": "Marksman",
+      "type": "Mystic",
       "stats": {
         "maxHealth": 780,
         "baseHealthRegen": 1.5,
@@ -2386,7 +2386,7 @@
         "sprintSpeed": 1.6
       },
       "levelScaling": {
-        "BulletDamage": 0.18,
+        "BulletDamage": 0.144,
         "MaxHealth": 50,
         "TechPower": 1.1,
         "LightMeleeDamage": 1.58,
@@ -2395,7 +2395,7 @@
       "spiritScaling": {},
       "weapon": {
         "key": "citadel_weapon_ratking_set",
-        "bulletDamage": 6,
+        "bulletDamage": 5.7,
         "bulletsPerShot": 2,
         "roundsPerSecond": 5,
         "bulletsPerBurst": 1,
@@ -2428,8 +2428,8 @@
           "Attribute_EWeaponAttribute_Spreadshot"
         ],
         "reference": {
-          "dps": 60,
-          "sustainedDps": 37.895
+          "dps": 57,
+          "sustainedDps": 36
         }
       },
       "altFire": null,
@@ -2464,7 +2464,7 @@
       },
       "levelScaling": {
         "BulletDamage": 0.165,
-        "BulletDamageAltFire": 0.24,
+        "BulletDamageAltFire": 0.228,
         "MaxHealth": 46,
         "TechPower": 1.1,
         "LightMeleeDamage": 1.58,
@@ -2711,7 +2711,7 @@
         "en": "Ivy",
         "ja": "アイビー"
       },
-      "type": "Marksman",
+      "type": "Healer",
       "stats": {
         "maxHealth": 755,
         "baseHealthRegen": 2,
@@ -2869,7 +2869,7 @@
         "en": "Mina",
         "ja": "ミナ"
       },
-      "type": "Marksman",
+      "type": "Mystic",
       "stats": {
         "maxHealth": 660,
         "baseHealthRegen": 2,
@@ -3025,7 +3025,7 @@
         "en": "Viscous",
         "ja": "ヴィスカス"
       },
-      "type": "Mystic",
+      "type": "Brawler",
       "stats": {
         "maxHealth": 780,
         "baseHealthRegen": 2,
@@ -3042,7 +3042,7 @@
       },
       "levelScaling": {
         "BulletDamage": 0.36,
-        "BulletDamageAltFire": 1.44,
+        "BulletDamageAltFire": 1.512,
         "MaxHealth": 45,
         "TechPower": 1.3,
         "LightMeleeDamage": 1.58,
@@ -3224,7 +3224,7 @@
       "type": "Brawler",
       "stats": {
         "maxHealth": 830,
-        "baseHealthRegen": 2.5,
+        "baseHealthRegen": 3,
         "bulletResist": 0,
         "spiritResist": 0,
         "meleeResist": 0,
@@ -3302,7 +3302,7 @@
       "type": "Brawler",
       "stats": {
         "maxHealth": 955,
-        "baseHealthRegen": 2.5,
+        "baseHealthRegen": 3,
         "bulletResist": 0,
         "spiritResist": 0,
         "meleeResist": 0,
@@ -4062,7 +4062,7 @@
         },
         {
           "DPS": {
-            "value": 18,
+            "value": 22,
             "scale": [
               {
                 "type": "spirit",
@@ -5319,14 +5319,14 @@
           "scale": [
             {
               "type": "spirit",
-              "value": 0.64
+              "value": 0.85
             }
           ]
         },
         "DashSlowPercent": -25,
         "ExpireDistance": 80,
         "FadingSlowPercent": 30,
-        "GroundAuraHeight": 4,
+        "GroundAuraHeight": 1,
         "ImpactDamage": {
           "value": 70,
           "scale": [
@@ -5395,7 +5395,7 @@
       },
       "upgrades": [
         {
-          "FadingSlowPercent": 15,
+          "FadingSlowPercent": 25,
           "MoveDistance": 5
         },
         {
@@ -5403,9 +5403,9 @@
           "RecastWindow": 8
         },
         {
-          "MaxStacks": 10,
+          "MaxStacks": 5,
           "StackDuration": 10,
-          "TechArmorDamageReductionPerStack": -2.5,
+          "TechArmorDamageReductionPerStack": -5,
           "TileSteps": 1
         }
       ],
@@ -5618,7 +5618,7 @@
           "scale": [
             {
               "type": "spirit",
-              "value": 1.3
+              "value": 0.9
             }
           ]
         },
@@ -5683,7 +5683,7 @@
           "CurrentHealthPercent": 5
         },
         {
-          "AbilityCooldown": -12,
+          "AbilityCooldown": -10,
           "ImmobilizeDuration": 0.5,
           "MaxReflectCount": 1
         }
@@ -5746,7 +5746,7 @@
           ]
         },
         "AbilityCooldown": {
-          "value": 210,
+          "value": 240,
           "scale": [
             {
               "type": "cooldown",
@@ -5760,11 +5760,11 @@
         "AuraLingerDuration": 0.15,
         "ChannelMoveSpeed": -1,
         "CheckmateThreshold": {
-          "value": 0,
+          "value": 100,
           "scale": [
             {
               "type": "power_increase",
-              "value": 0
+              "value": 5
             }
           ]
         },
@@ -5783,7 +5783,7 @@
           "scale": [
             {
               "type": "spirit",
-              "value": 1.4
+              "value": 1.6
             }
           ]
         },
@@ -5843,15 +5843,7 @@
           "AbilityCooldown": -40
         },
         {
-          "CheckmateThreshold": {
-            "value": 200,
-            "scale": [
-              {
-                "type": "power_increase",
-                "value": 5
-              }
-            ]
-          },
+          "CheckmateThreshold": 150,
           "SlowPercent": 15
         },
         {
@@ -6310,7 +6302,7 @@
           ]
         },
         "AbilityCooldown": {
-          "value": 110,
+          "value": 95,
           "scale": [
             {
               "type": "cooldown",
@@ -7197,7 +7189,7 @@
         {
           "AbilityCastRange": 25,
           "WallImpactDamage": {
-            "value": 75,
+            "value": 90,
             "scale": [
               {
                 "type": "spirit",
@@ -7207,7 +7199,7 @@
           }
         },
         {
-          "AbilityCooldown": -15,
+          "AbilityCooldown": -18,
           "StunDuration": 1.25
         }
       ],
@@ -7618,7 +7610,7 @@
           "StaminaToRestore": 2
         },
         {
-          "AmpDamagePercent": 11
+          "AmpDamagePercent": 12
         }
       ],
       "card": [
@@ -7722,7 +7714,7 @@
           "AbilityCooldown": -40
         },
         {
-          "AbilityDuration": 2.5,
+          "AbilityDuration": 2.75,
           "MaxTargets": 1
         }
       ],
@@ -8778,7 +8770,7 @@
         },
         "SlowPercent": 40,
         "StunDuration": {
-          "value": 0.8,
+          "value": 1.5,
           "scale": [
             {
               "type": "duration",
@@ -8794,7 +8786,7 @@
         },
         {
           "MeleeResistReduction": -25,
-          "StunDuration": 0.4
+          "StunDuration": 0.6
         },
         {
           "TargetLifesteal": 75,
@@ -9179,7 +9171,7 @@
         "BossDamagePercentOutgoing": 30,
         "MeleeResist": 35,
         "ModelScale": 0.8,
-        "NonHeroDamagePercentOutgoing": 50,
+        "NonHeroDamagePercentOutgoing": 65,
         "TechResist": 35,
         "TickRate": 0.5,
         "TrackingSpeed": 430,
@@ -9216,7 +9208,7 @@
           "scale": [
             {
               "type": "power_increase",
-              "value": 9
+              "value": 10
             }
           ]
         },
@@ -9892,7 +9884,7 @@
           "MinDps": 6
         },
         {
-          "IncomingDamagePercent": 15,
+          "IncomingDamagePercent": 16,
           "Radius": 1
         }
       ],
@@ -10112,7 +10104,7 @@
           "scale": [
             {
               "type": "spirit",
-              "value": 1.22
+              "value": 1.35
             }
           ]
         },
@@ -10612,7 +10604,7 @@
         },
         {
           "Damage": 160,
-          "StunDuration": 0.9
+          "StunDuration": 1.1
         }
       ],
       "card": [
@@ -11654,7 +11646,7 @@
           "AbilityCharges": 1
         },
         {
-          "LifestealPercentHero": 15
+          "LifestealPercentHero": 20
         },
         {
           "HealAmpReceivePenaltyPercent": -33,
@@ -11949,6 +11941,15 @@
           "LifeStealPercentOnHit": 100
         },
         {
+          "Damage": {
+            "value": 0,
+            "scale": [
+              {
+                "type": "spirit",
+                "value": 0.4
+              }
+            ]
+          },
           "Radius": 10,
           "StunDuration": 0.9
         }
@@ -12386,7 +12387,7 @@
           ]
         },
         "AbilityCooldown": {
-          "value": 185,
+          "value": 190,
           "scale": [
             {
               "type": "cooldown",
@@ -12431,14 +12432,15 @@
       },
       "upgrades": [
         {
-          "AbilityCooldown": -20
+          "AbilityCooldown": -30
         },
         {
-          "AbilityDuration": 1.5
+          "AbilityDuration": 1.5,
+          "FireRateSlow": 20
         },
         {
           "BonusHealthRegen": {
-            "value": 65,
+            "value": 75,
             "scale": [
               {
                 "type": "spirit",
@@ -12490,11 +12492,11 @@
         "AbilityUnitTargetLimit": 1,
         "ChannelMoveSpeed": 1.3,
         "Damage": {
-          "value": 50,
+          "value": 45,
           "scale": [
             {
               "type": "spirit",
-              "value": 0.75
+              "value": 0.675
             }
           ]
         },
@@ -12529,7 +12531,7 @@
       },
       "upgrades": [
         {
-          "Damage": 35
+          "Damage": 30
         },
         {
           "AbilityCooldown": -5,
@@ -12588,11 +12590,11 @@
         "BulletResist": 60,
         "ChannelMoveSpeed": -1,
         "DPS": {
-          "value": 75,
+          "value": 65,
           "scale": [
             {
               "type": "spirit",
-              "value": 1.488
+              "value": 1.339
             }
           ]
         },
@@ -12625,7 +12627,7 @@
       },
       "upgrades": [
         {
-          "DPS": 50
+          "DPS": 45
         },
         {
           "AbilityChannelTime": 4,
@@ -12702,7 +12704,7 @@
         },
         "AbilityUnitTargetLimit": 1,
         "ChannelMoveSpeed": 1.3,
-        "Damage": 40,
+        "Damage": 35,
         "GrowthPerMeter": 0.5,
         "HeightOffGround": 20,
         "InitialWidth": 5
@@ -12710,7 +12712,7 @@
       "upgrades": [
         {
           "AbilityCastRange": 5,
-          "Damage": 50
+          "Damage": 45
         },
         {
           "GroundDashReductionPercent": -26,
@@ -12783,11 +12785,11 @@
           ]
         },
         "DPS": {
-          "value": 40,
+          "value": 35,
           "scale": [
             {
               "type": "spirit",
-              "value": 0.6
+              "value": 0.54
             }
           ]
         }
@@ -12803,11 +12805,11 @@
         {
           "AbilityChannelTime": 0.7,
           "DPS": {
-            "value": 40,
+            "value": 35,
             "scale": [
               {
                 "type": "spirit",
-                "value": 0.4
+                "value": 0.36
               }
             ]
           }
@@ -13009,6 +13011,7 @@
         {
           "AbilityCharges": 1,
           "AirControlPercent": 60,
+          "JumpVelocity": 4,
           "RestoreStaminaOnUse": 1
         }
       ],
@@ -14015,7 +14018,7 @@
         "AbilityUnitTargetLimit": 1,
         "ChannelMoveSpeed": -1,
         "CombatBarrier": {
-          "value": 0,
+          "value": 400,
           "scale": [
             {
               "type": "spirit",
@@ -14023,29 +14026,38 @@
             }
           ]
         },
-        "InterruptCooldown": 4,
+        "InterruptCooldown": 5,
+        "MovementSpeedBonusDuration": {
+          "value": 12,
+          "scale": [
+            {
+              "type": "duration",
+              "value": 1
+            }
+          ]
+        },
         "SearchRadius": 30,
-        "TeleportCompletedTime": 2
+        "TeleportCompletedTime": 3
       },
       "upgrades": [
         {
           "BonusFireRate": 20,
-          "BonusMoveSpeed": 3,
-          "MovementSpeedBonusDuration": 12
+          "BonusMoveSpeed": 3
+        },
+        {
+          "AbilityCooldown": -65
         },
         {
           "CombatBarrier": {
-            "value": 400,
+            "value": 0,
             "scale": [
               {
                 "type": "spirit",
-                "value": 0.6
+                "value": 0.8
               }
             ]
-          }
-        },
-        {
-          "AbilityCooldown": -90
+          },
+          "UninterruptibleByDamage": 1
         }
       ],
       "card": [
@@ -14225,7 +14237,7 @@
         },
         {
           "CooldownRefundPercent": 50,
-          "ImpactDamage": 60
+          "ImpactDamage": 90
         }
       ],
       "card": [
@@ -14293,7 +14305,7 @@
         },
         {
           "DamageAmpBuildDuration": 10,
-          "DamageAmpDuration": 6,
+          "DamageAmpDuration": 8,
           "OutgoingDamagePercent": 18
         }
       ],
@@ -14645,6 +14657,7 @@
           ]
         },
         "DebuffDuration": 0.5,
+        "GrabHeight": 1.75,
         "GroundAuraPopDelay": 1.1,
         "GroundAuraSpacing": 1,
         "ImmobilizeDuration": {
@@ -14661,7 +14674,7 @@
         "TetherDuration": 1,
         "TetherRadius": 0.1,
         "TickRate": 0.1,
-        "ZombieWallDeployTime": 0.6,
+        "ZombieWallDeployTime": 0.8,
         "ZombieWallHeight": 2.5,
         "ZombieWallLength": {
           "value": 14,
@@ -14954,11 +14967,11 @@
           "MoveSpeedPercent": 25
         },
         {
-          "AbilityDuration": 10,
-          "SummonFrequency": -0.3
+          "AbilityDuration": 10
         },
         {
-          "CurrentHealthDamagePercentage": 5
+          "CurrentHealthDamagePercentage": 5,
+          "SummonFrequency": -0.3
         }
       ],
       "card": [
@@ -15058,7 +15071,8 @@
         "LeechCrawlRadiusExitGap": 5,
         "LeechEatDurationPerSecond": 0.65,
         "LeechEatTickRate": 0.38,
-        "LeechGroundLifetime": 180,
+        "LeechGroundLifetime": 120,
+        "LeechGroundLifetimePerMinute": 3,
         "LeechHuntCrawlSpeed": 3,
         "LeechHuntLifetime": {
           "value": 9,
@@ -15151,6 +15165,10 @@
           "kind": "fire_rate"
         },
         {
+          "key": "SpiritPowerPerLeechStack",
+          "kind": "tech_damage"
+        },
+        {
           "key": "MaxLeechBonusStacks",
           "kind": null
         },
@@ -15161,10 +15179,6 @@
         {
           "key": "LeechStaminaDrain",
           "kind": "stamina_recovery"
-        },
-        {
-          "key": "SpiritPowerPerLeechStack",
-          "kind": "tech_damage"
         }
       ]
     },
@@ -15234,7 +15248,7 @@
         },
         {
           "DispelDebuffs": 1,
-          "RushTimeScaleBonusPercent": 15
+          "RushTimeScaleBonusPercent": 20
         }
       ],
       "card": [
@@ -15303,11 +15317,11 @@
         "ChargePercentPerSecondPerLeech": 0.15,
         "HeadshotHealBonusPercent": 15,
         "HealRegen": {
-          "value": 25,
+          "value": 22,
           "scale": [
             {
               "type": "spirit",
-              "value": 0.2
+              "value": 0.24
             }
           ]
         },
@@ -15321,7 +15335,7 @@
           "AbilityCharges": 1
         },
         {
-          "HealRegen": 20,
+          "HealRegen": 16,
           "StaminaRestorePerHit": 0.6
         },
         {
@@ -15399,8 +15413,9 @@
         "BuildupDecayTime": 10,
         "BuildupLookAngle": 80,
         "BuildupLookAngleFull": 55,
+        "BuildupLookAngleVertical": 50,
         "BuildupTickRate": 0.075,
-        "BuildupTime": 1.3,
+        "BuildupTime": 2,
         "CameraTurnRateMax": 15,
         "ChannelMoveSpeed": 3.5,
         "ConeAngle": 180,
@@ -15468,7 +15483,6 @@
         },
         {
           "AbilityChannelTime": 3,
-          "ChannelDamageImmune": 1,
           "DPS": {
             "value": 0,
             "scale": [
@@ -15477,7 +15491,8 @@
                 "value": 0.5
               }
             ]
-          }
+          },
+          "DamageResistPctWhileChanneling": 50
         }
       ],
       "card": [
@@ -15566,10 +15581,10 @@
           "AbilityCharges": 1
         },
         {
+          "AbilityCooldownBetweenCharge": -2,
           "Damage": 54
         },
         {
-          "AbilityCooldownBetweenCharge": -3,
           "Damage": {
             "value": 0,
             "scale": [
@@ -15578,7 +15593,8 @@
                 "value": 1
               }
             ]
-          }
+          },
+          "WallRicochet": 1
         }
       ],
       "card": [
@@ -16262,11 +16278,11 @@
         "AbilityUnitTargetLimit": 1,
         "BonusAmpToVampire": 5,
         "BonusDamage": {
-          "value": 115,
+          "value": 95,
           "scale": [
             {
               "type": "power_increase",
-              "value": 3
+              "value": 3.6
             },
             {
               "type": "weapon_damage",
@@ -16554,8 +16570,8 @@
         },
         {
           "AbilityCooldown": -13,
-          "MaxHealthBuffDuration": 16,
-          "MaxHealthBuffPct": 10
+          "MaxHealthBuffDuration": 20,
+          "MaxHealthBuffPct": 15
         }
       ],
       "card": [
@@ -16587,7 +16603,7 @@
       "props": {
         "AbilityCastDelay": 0.28,
         "AbilityCooldown": {
-          "value": 27,
+          "value": 25,
           "scale": [
             {
               "type": "cooldown",
@@ -16850,7 +16866,7 @@
         "BounceGrenadeSpeed": 1200,
         "ChannelMoveSpeed": -1,
         "DamagePerShrapnel": {
-          "value": 70,
+          "value": 60,
           "scale": [
             {
               "type": "weapon_damage_increase",
@@ -16897,11 +16913,11 @@
           "AbilityCooldown": -8
         },
         {
-          "DamagePerShrapnel": 70
+          "DamagePerShrapnel": 60
         },
         {
           "BigExplosionDamage": {
-            "value": 300,
+            "value": 275,
             "scale": [
               {
                 "type": "weapon_damage_increase",
@@ -17165,7 +17181,7 @@
       "props": {
         "AbilityCastDelay": 2,
         "AbilityCooldown": {
-          "value": 160,
+          "value": 180,
           "scale": [
             {
               "type": "cooldown",
@@ -17324,11 +17340,11 @@
         "BleedTickRate": 1,
         "ChannelMoveSpeed": -1,
         "FullRageCurrentHealthDamagePct": {
-          "value": 3.5,
+          "value": 4,
           "scale": [
             {
               "type": "spirit",
-              "value": 0.01
+              "value": 0.015
             }
           ]
         },
@@ -17357,6 +17373,15 @@
               {
                 "type": "spirit",
                 "value": 0.07
+              }
+            ]
+          },
+          "FullRageCurrentHealthDamagePct": {
+            "value": 0,
+            "scale": [
+              {
+                "type": "spirit",
+                "value": 0.01
               }
             ]
           }
@@ -17608,7 +17633,7 @@
         "RagePerSpiritDamage": 0.01452864,
         "RagePerWeaponDamage": 0.0158766,
         "RecastWindow": {
-          "value": 16,
+          "value": 12,
           "scale": [
             {
               "type": "duration",
@@ -19018,7 +19043,7 @@
         },
         "ChannelMoveSpeed": -1,
         "Damage": {
-          "value": 140,
+          "value": 125,
           "scale": [
             {
               "type": "spirit",
@@ -19910,7 +19935,7 @@
       },
       "upgrades": [
         {
-          "Damage": 36,
+          "Damage": 45,
           "Radius": 1.5
         },
         {
@@ -20393,7 +20418,7 @@
             }
           ]
         },
-        "WeaponPowerDebuff": -25
+        "WeaponPowerDebuff": -30
       },
       "upgrades": [
         {
@@ -20474,7 +20499,7 @@
             }
           ]
         },
-        "MoveSpeedBonusPct": 15
+        "MoveSpeedBonusPct": 20
       },
       "upgrades": [
         {
@@ -20679,8 +20704,8 @@
           "Radius": 4
         },
         {
-          "AbilityCooldown": -30,
-          "PulseDPS": 40.5
+          "AbilityCooldown": -40,
+          "PulseDPS": 50
         },
         {
           "AbilityDuration": 4,
@@ -21544,7 +21569,7 @@
           ]
         },
         "HeartHeal": {
-          "value": 60,
+          "value": 45,
           "scale": [
             {
               "type": "spirit",
@@ -21638,7 +21663,7 @@
       },
       "hero": "hero_wraith",
       "props": {
-        "AbilityCastDelay": 0.75,
+        "AbilityCastDelay": 1,
         "AbilityCastRange": {
           "value": 25,
           "scale": [
@@ -21649,7 +21674,7 @@
           ]
         },
         "AbilityCooldown": {
-          "value": 46,
+          "value": 50,
           "scale": [
             {
               "type": "cooldown",
@@ -21925,7 +21950,7 @@
           "scale": [
             {
               "type": "spirit",
-              "value": 1.85
+              "value": 1.96
             }
           ]
         },
@@ -21958,7 +21983,7 @@
             "scale": [
               {
                 "type": "spirit",
-                "value": 0.5
+                "value": 0.53
               }
             ]
           },
@@ -21997,7 +22022,7 @@
       "hero": "hero_yamato",
       "props": {
         "AbilityCastRange": {
-          "value": 26,
+          "value": 23,
           "scale": [
             {
               "type": "range",
@@ -22046,7 +22071,7 @@
           "SpiritBonus": 35
         },
         {
-          "AbilityCastRange": 15,
+          "AbilityCastRange": 8,
           "AbilityCharges": 2,
           "AbilityCooldownBetweenCharge": 5,
           "CanGrappleAllyHeroes": 1
@@ -22202,7 +22227,7 @@
       "props": {
         "AbilityChannelTime": 1.5,
         "AbilityCooldown": {
-          "value": 150,
+          "value": 160,
           "scale": [
             {
               "type": "cooldown",
@@ -22248,7 +22273,7 @@
           "WeaponDamageBonus": 7
         },
         {
-          "AbilityCooldown": -20,
+          "AbilityCooldown": -30,
           "BonusMoveSpeed": 4
         },
         {
@@ -22305,7 +22330,7 @@
       "props": {
         "AbilityCooldown": 30,
         "AbilityCooldownBetweenCharge": -1,
-        "AbilityPostCastDuration": 0.5,
+        "AbilityPostCastDuration": 0.2,
         "AbilityUnitTargetLimit": 1,
         "BulletResist": 5,
         "ChannelMoveSpeed": -1,
@@ -22699,7 +22724,7 @@
         "BaseAttackDamagePercent": 8,
         "BonusBulletSpeedPercent": 60,
         "ChannelMoveSpeed": -1,
-        "ProcChance": 55
+        "ProcChance": 60
       },
       "sections": [
         {
@@ -23049,8 +23074,8 @@
         "ChannelMoveSpeed": -1,
         "DebuffDuration": 12,
         "DiminishingMultiplier": 0.5,
-        "HealAmpReceivePenaltyPercent": -35,
-        "HealAmpRegenPenaltyPercent": -35,
+        "HealAmpReceivePenaltyPercent": -40,
+        "HealAmpRegenPenaltyPercent": -40,
         "MagicResistReduction": -16
       },
       "sections": [
@@ -24231,9 +24256,9 @@
         "AbilityCooldownBetweenCharge": -1,
         "AbilityDuration": 13,
         "AbilityUnitTargetLimit": 1,
-        "AmbushBonusFireRate": 25,
-        "AmbushBonusMeleeDamage": 25,
         "AmbushBonusTechPower": 25,
+        "AmbushBonusWeaponDamage": 50,
+        "AmbushBuildUpDuration": 6,
         "AmbushDuration": 5,
         "ChannelMoveSpeed": -1,
         "InvisAlertWhenFading": 1,
@@ -24291,7 +24316,7 @@
           "cooldown": null,
           "props": [
             {
-              "key": "AmbushBonusFireRate",
+              "key": "AmbushBonusWeaponDamage",
               "kind": "bullet_damage",
               "usage": "conditional"
             },
@@ -24301,12 +24326,12 @@
               "usage": "conditional"
             },
             {
-              "key": "AmbushBonusMeleeDamage",
-              "kind": "melee_damage",
+              "key": "AmbushDuration",
+              "kind": "duration",
               "usage": "conditional"
             },
             {
-              "key": "AmbushDuration",
+              "key": "AmbushBuildUpDuration",
               "kind": "duration",
               "usage": "conditional"
             }
@@ -24315,17 +24340,15 @@
       ],
       "upgradeBonus": {
         "AbilityCooldown": -17,
-        "AmbushBonusFireRate": 35,
-        "AmbushBonusMeleeDamage": 30,
         "AmbushBonusTechPower": 35,
+        "AmbushBonusWeaponDamage": 35,
         "OutOfCombatHealthRegen": 20
       },
       "corruptedBonus": {
         "AbilityCooldown": -15,
         "AbilityDuration": 7,
-        "AmbushBonusFireRate": 35,
-        "AmbushBonusMeleeDamage": 35,
         "AmbushBonusTechPower": 35,
+        "AmbushBonusWeaponDamage": 35,
         "AmbushDuration": 3,
         "OutOfCombatHealthRegen": 7
       }
@@ -24351,7 +24374,7 @@
         "ChannelMoveSpeed": -1,
         "CloseRangeBonusWeaponPower": 50,
         "MeleeResistPercent": 30,
-        "SlowDuration": 2,
+        "SlowDuration": 2.5,
         "SlowPercent": 20
       },
       "sections": [
@@ -25116,11 +25139,11 @@
       "isImbue": false,
       "props": {
         "AbilityCooldownBetweenCharge": -1,
-        "AbilityLifestealPercentHero": 28,
+        "AbilityLifestealPercentHero": 30,
         "AbilityUnitTargetLimit": 1,
         "BaseAttackDamagePercent": 12,
         "BonusHealth": 180,
-        "BulletLifestealPercent": 28,
+        "BulletLifestealPercent": 30,
         "ChannelMoveSpeed": -1,
         "TechPower": 12
       },
@@ -25394,7 +25417,7 @@
       "isImbue": false,
       "props": {
         "AbilityCastDelay": 0.2,
-        "AbilityCooldown": 45,
+        "AbilityCooldown": 55,
         "AbilityCooldownBetweenCharge": -1,
         "AbilityUnitTargetLimit": 1,
         "BuffDuration": 6,
@@ -25424,7 +25447,7 @@
         },
         {
           "type": "active",
-          "cooldown": 45,
+          "cooldown": 55,
           "props": [
             {
               "key": "CombatBarrier",
@@ -25950,11 +25973,11 @@
           ]
         },
         "ProcBaseAttackDamagePercentAltFire": {
-          "value": 40,
+          "value": 38,
           "scale": [
             {
               "type": "power_increase",
-              "value": 1.3
+              "value": 1.24
             }
           ]
         },
@@ -26245,7 +26268,7 @@
       "isImbue": false,
       "props": {
         "AbilityCastDelay": 0.1,
-        "AbilityCooldown": 45,
+        "AbilityCooldown": 40,
         "AbilityCooldownBetweenCharge": -1,
         "AbilityDuration": 4.5,
         "AbilityUnitTargetLimit": 1,
@@ -26270,7 +26293,7 @@
         },
         {
           "type": "active",
-          "cooldown": 45,
+          "cooldown": 40,
           "props": [
             {
               "key": "StatusEffectEMP",
@@ -26342,9 +26365,9 @@
         "AbilityDuration": 6.5,
         "AbilityUnitTargetLimit": 1,
         "ActiveBonusFireRate": 32,
-        "BaseAttackDamagePercent": 6,
+        "BaseAttackDamagePercent": 10,
         "BonusHealth": 100,
-        "BulletLifestealPercent": 14,
+        "BulletLifestealPercent": 15,
         "ChannelMoveSpeed": -1,
         "MoveWhileShootingSpeedPenaltyReductionPercent": 100,
         "TechResist": 40
@@ -26429,7 +26452,7 @@
       "props": {
         "AbilityCooldownBetweenCharge": -1,
         "AbilityUnitTargetLimit": 1,
-        "BaseAttackDamagePercent": 80,
+        "BaseAttackDamagePercent": 85,
         "BonusClipPerKill": 2,
         "BuildUpDuration": 2,
         "BuildUpPerShot": 1.2,
@@ -26564,7 +26587,7 @@
         "BonusGoldPerMinute": 80,
         "ChannelMoveSpeed": -1,
         "OutOfCombatHealthRegen": 1,
-        "OutgoingDamagePenaltyPercent": -15,
+        "OutgoingDamagePenaltyPercent": -12,
         "StartingGold": 400,
         "ThinkRate": 3
       },
@@ -27052,7 +27075,15 @@
         "ChannelMoveSpeed": -1,
         "HealAmpReceivePenaltyPercent": -35,
         "HealAmpRegenPenaltyPercent": -35,
-        "HealOnKill": 275,
+        "HealOnKill": {
+          "value": 170,
+          "scale": [
+            {
+              "type": "power_increase",
+              "value": 3
+            }
+          ]
+        },
         "TechPower": 7
       },
       "sections": [
@@ -27199,29 +27230,21 @@
       "tier": 2,
       "cost": 1600,
       "activation": "Passive",
-      "components": [
-        "upgrade_endurance"
-      ],
+      "components": [],
       "isImbue": false,
       "props": {
         "AbilityCooldownBetweenCharge": -1,
         "AbilityUnitTargetLimit": 1,
-        "BonusHealthRegen": 3,
         "ChannelMoveSpeed": -1,
         "HealAmpCastPercent": 20,
         "HealAmpRegenPercent": 20,
-        "OutOfCombatHealthRegen": 1
+        "OutOfCombatHealthRegen": 2
       },
       "sections": [
         {
           "type": "innate",
           "cooldown": null,
           "props": [
-            {
-              "key": "BonusHealthRegen",
-              "kind": "healing",
-              "usage": "always"
-            },
             {
               "key": "OutOfCombatHealthRegen",
               "kind": "healing",
@@ -27242,7 +27265,6 @@
         }
       ],
       "upgradeBonus": {
-        "BonusHealthRegen": 9,
         "HealAmpCastPercent": 15,
         "HealAmpRegenPercent": 15
       },
@@ -27312,8 +27334,8 @@
           "value": 325,
           "scale": [
             {
-              "type": "power_increase",
-              "value": 6
+              "type": "spirit",
+              "value": 1.1
             }
           ]
         }
@@ -27385,12 +27407,12 @@
       "isImbue": false,
       "props": {
         "AbilityCooldownBetweenCharge": -1,
-        "AbilityLifestealPercentHero": 13,
+        "AbilityLifestealPercentHero": 15,
         "AbilityUnitTargetLimit": 1,
         "BonusHealth": 90,
         "ChannelMoveSpeed": -1,
         "NonHeroAbilityLifestealTooltipOnly": 3,
-        "TechPower": 6
+        "TechPower": 8
       },
       "sections": [
         {
@@ -27501,7 +27523,7 @@
         "AbilityCooldownBetweenCharge": -1,
         "AbilityUnitTargetLimit": 1,
         "BaseAttackDamagePercent": 8,
-        "BonusBulletSpeedPercent": 60,
+        "BonusBulletSpeedPercent": 45,
         "ChannelMoveSpeed": -1
       },
       "sections": [
@@ -27673,11 +27695,11 @@
       "props": {
         "AbilityCooldownBetweenCharge": -1,
         "AbilityUnitTargetLimit": 1,
-        "BulletResist": 30,
+        "BulletResist": 35,
         "BulletResistBelowThreshold": 15,
         "ChannelMoveSpeed": -1,
         "HealthThreshold": 50,
-        "OutOfCombatHealthRegen": 3
+        "OutOfCombatHealthRegen": 5
       },
       "sections": [
         {
@@ -27820,14 +27842,14 @@
         "AbilityCooldown": 30,
         "AbilityCooldownBetweenCharge": -1,
         "AbilityDuration": 7,
-        "AbilityLifestealPercentHero": 70,
-        "AbilityLifestealPercentHeroPassive": 13,
+        "AbilityLifestealPercentHero": 75,
+        "AbilityLifestealPercentHeroPassive": 15,
         "AbilityUnitTargetLimit": 1,
         "BonusHealth": 100,
         "BonusSpirit": 30,
         "ChannelMoveSpeed": -1,
         "NonHeroAbilityLifestealTooltipOnly": 3,
-        "TechPower": 6,
+        "TechPower": 8,
         "TechResist": 10
       },
       "sections": [
@@ -28057,7 +28079,7 @@
       "props": {
         "AbilityCooldownBetweenCharge": -1,
         "AbilityUnitTargetLimit": 1,
-        "BonusHealthRegen": 8,
+        "BonusHealthRegen": 15,
         "ChannelMoveSpeed": -1,
         "FireRateSlow": 40,
         "FireRateSlowDuration": 4,
@@ -28626,7 +28648,7 @@
         "AbilityUnitTargetLimit": 1,
         "BonusHealth": 50,
         "ChannelMoveSpeed": -1,
-        "GroundDashReductionPercent": -10,
+        "GroundDashReductionPercent": -12,
         "MovementSpeedSlow": 24
       },
       "sections": [
@@ -28971,7 +28993,7 @@
         "BuffDuration": 6,
         "ChannelMoveSpeed": -1,
         "MeleeResistPercent": 18,
-        "ParryCooldownReduction": 1.75,
+        "ParryCooldownReduction": 1.25,
         "ParrySuccessHealPercentage": 100
       },
       "sections": [
@@ -29045,6 +29067,7 @@
         "AbilityUnitTargetLimit": 1,
         "BulletResist": 12,
         "ChannelMoveSpeed": -1,
+        "GravityScale": 20,
         "GroundDashReductionPercent": -20
       },
       "sections": [
@@ -29066,6 +29089,11 @@
             {
               "key": "ActiveMoveSpeedPenalty",
               "kind": "move_speed",
+              "usage": "conditional"
+            },
+            {
+              "key": "GravityScale",
+              "kind": "slow",
               "usage": "conditional"
             },
             {
@@ -29945,7 +29973,7 @@
       "props": {
         "AbilityCooldownBetweenCharge": -1,
         "AbilityUnitTargetLimit": 1,
-        "BaseAttackDamagePercent": 18,
+        "BaseAttackDamagePercent": 22,
         "BonusFireRate": 7,
         "BulletResist": 18,
         "ChannelMoveSpeed": -1,
@@ -30184,11 +30212,11 @@
         "BonusHealth": 90,
         "ChannelMoveSpeed": -1,
         "HealingPerCast": {
-          "value": 65,
+          "value": 40,
           "scale": [
             {
               "type": "power_increase",
-              "value": 1.7
+              "value": 1.4
             }
           ]
         },
@@ -30197,7 +30225,7 @@
           "scale": [
             {
               "type": "spirit",
-              "value": 0.035
+              "value": 0.025
             }
           ]
         },
@@ -30362,6 +30390,17 @@
         "SpiritDamageReflectedPct": 25
       },
       "sections": [
+        {
+          "type": "innate",
+          "cooldown": null,
+          "props": [
+            {
+              "key": "BulletResist",
+              "kind": "bullet_armor_up",
+              "usage": "always"
+            }
+          ]
+        },
         {
           "type": "active",
           "cooldown": 23,
@@ -30563,8 +30602,8 @@
             }
           ]
         },
-        "HealAmpReceivePenaltyPercent": -50,
-        "HealAmpRegenPenaltyPercent": -50,
+        "HealAmpReceivePenaltyPercent": -55,
+        "HealAmpRegenPenaltyPercent": -55,
         "TechPower": 8,
         "TickRate": 1
       },
@@ -31176,7 +31215,7 @@
         "DamageThreshold": 225,
         "DamageWindow": 3.5,
         "OutOfCombatHealthRegen": 2.5,
-        "TechResist": 18
+        "TechResist": 15
       },
       "sections": [
         {
@@ -31347,7 +31386,7 @@
       "isImbue": false,
       "props": {
         "AbilityCastDelay": 0.1,
-        "AbilityCooldown": 18,
+        "AbilityCooldown": 22,
         "AbilityCooldownBetweenCharge": -1,
         "AbilityDuration": 12,
         "AbilityUnitTargetLimit": 1,
@@ -31370,7 +31409,7 @@
         },
         {
           "type": "active",
-          "cooldown": 18,
+          "cooldown": 22,
           "props": [
             {
               "key": "MagicResistReduction",
@@ -31749,11 +31788,11 @@
         "AbilityDuration": 5,
         "AbilityUnitTargetLimit": 1,
         "ActiveBonusFireRate": 34,
-        "ActiveBonusLifesteal": 70,
+        "ActiveBonusLifesteal": 75,
         "ActiveReloadPercent": 75,
-        "BaseAttackDamagePercent": 6,
+        "BaseAttackDamagePercent": 10,
         "BonusHealth": 100,
-        "BulletLifestealPercent": 13,
+        "BulletLifestealPercent": 15,
         "BulletResist": 10,
         "ChannelMoveSpeed": -1
       },
@@ -31920,7 +31959,7 @@
         "AbilityCooldownBetweenCharge": -1,
         "AbilityDuration": 3,
         "AbilityUnitTargetLimit": 1,
-        "BonusHealth": 50,
+        "BonusHealth": 90,
         "ChannelMoveSpeed": -1,
         "CooldownOnMiss": 30,
         "Damage": {
@@ -32007,7 +32046,7 @@
             }
           ]
         },
-        "MeleeResistPercent": 18
+        "MeleeResistPercent": 22
       },
       "sections": [
         {
@@ -32120,7 +32159,7 @@
       "props": {
         "AbilityCooldownBetweenCharge": -1,
         "AbilityDuration": 15,
-        "AbilityLifestealPercentHero": 13,
+        "AbilityLifestealPercentHero": 15,
         "AbilityUnitTargetLimit": 1,
         "BonusAbilityDurationPercent": 13,
         "BonusFireRate": 25,
@@ -32131,7 +32170,7 @@
         "BuildUpPerShot": 1.08,
         "ChannelMoveSpeed": -1,
         "NonHeroAbilityLifestealTooltipOnly": 3,
-        "TechPower": 6
+        "TechPower": 8
       },
       "sections": [
         {
@@ -32527,8 +32566,8 @@
           ]
         },
         "DotMultiplerTroopers": 0.5,
-        "HealAmpReceivePenaltyPercent": -35,
-        "HealAmpRegenPenaltyPercent": -35,
+        "HealAmpReceivePenaltyPercent": -40,
+        "HealAmpRegenPenaltyPercent": -40,
         "TickRate": 0.5
       },
       "sections": [
@@ -32738,9 +32777,17 @@
         "AbilityUnitTargetLimit": 1,
         "BonusHealth": 50,
         "ChannelMoveSpeed": -1,
-        "Damage": 150,
+        "Damage": {
+          "value": 150,
+          "scale": [
+            {
+              "type": "spirit",
+              "value": 0.35
+            }
+          ]
+        },
         "DelayBeforeStun": 3,
-        "GroundDashReductionPercent": -10,
+        "GroundDashReductionPercent": -12,
         "MovementSpeedSlow": 24,
         "SlowPercent": 64,
         "StunDuration": 0.75
@@ -32893,9 +32940,9 @@
       "props": {
         "AbilityCooldownBetweenCharge": -1,
         "AbilityUnitTargetLimit": 1,
-        "BaseAttackDamagePercent": 6,
+        "BaseAttackDamagePercent": 10,
         "BonusHealth": 90,
-        "BulletLifestealPercent": 13,
+        "BulletLifestealPercent": 15,
         "ChannelMoveSpeed": -1
       },
       "sections": [
@@ -33943,17 +33990,17 @@
       "en": "Ally Distance",
       "ja": "味方の距離"
     },
-    "AmbushBonusFireRate": {
-      "en": "Ambush Bonus Fire Rate",
-      "ja": "奇襲状態の発射速度"
-    },
-    "AmbushBonusMeleeDamage": {
-      "en": "Ambush Bonus Melee Damage",
-      "ja": "奇襲状態の近接ダメージ"
-    },
     "AmbushBonusTechPower": {
       "en": "Ambush Bonus Tech Power",
       "ja": "奇襲状態のスピリットパワー"
+    },
+    "AmbushBonusWeaponDamage": {
+      "en": "Ambush Bonus Weapon Damage",
+      "ja": "奇襲状態の武器ダメージ"
+    },
+    "AmbushBuildUpDuration": {
+      "en": "Ambush Build Up Duration",
+      "ja": "完全な奇襲状態になるまでの時間"
     },
     "AmbushDuration": {
       "en": "Ambush Duration",
@@ -34612,7 +34659,7 @@
     },
     "DeferredDamageBonusPercent": {
       "en": "Extra Damage Taken",
-      "ja": "受けた追加ダメージ"
+      "ja": "受ける追加ダメージ"
     },
     "DeferredDamageDuration": {
       "en": "Deferred Damage Duration",
@@ -34913,7 +34960,7 @@
     },
     "HealOnActivate": {
       "en": "Heal On Activate",
-      "ja": "発動時のHP回復量"
+      "ja": "回復量"
     },
     "HealOnHit": {
       "en": "Heal On Hit",
@@ -35475,7 +35522,7 @@
       "ja": "スロウ"
     },
     "MovementSpeedBonusDuration": {
-      "en": "Move Speed Duration",
+      "en": "Buff Duration",
       "ja": "移動速度継続時間"
     },
     "MovementSpeedSlow": {
