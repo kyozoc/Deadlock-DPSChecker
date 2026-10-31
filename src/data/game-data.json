@@ -1,7 +1,7 @@
 {
   "meta": {
-    "gameVersion": 6833,
-    "vdataVersion": 6833,
+    "gameVersion": 6839,
+    "vdataVersion": 6839,
     "warnings": [
       "hero_werewolf_transformed: 武器のヘッドショット倍率が vdata から取れない"
     ]
@@ -3301,7 +3301,7 @@
       },
       "type": "Brawler",
       "stats": {
-        "maxHealth": 955,
+        "maxHealth": 830,
         "baseHealthRegen": 3,
         "bulletResist": 0,
         "spiritResist": 0,
@@ -3311,12 +3311,12 @@
         "lightMeleeDamage": 50,
         "heavyMeleeDamage": 116,
         "bulletLifesteal": 0,
-        "maxMoveSpeed": 8.2,
+        "maxMoveSpeed": 6.7,
         "sprintSpeed": 2.5
       },
       "levelScaling": {
         "BulletDamage": 0.7735,
-        "MaxHealth": 46,
+        "MaxHealth": 31,
         "TechPower": 1.1,
         "LightMeleeDamage": 1.58,
         "HeavyMeleeDamage": 3.6656
@@ -3329,9 +3329,9 @@
         "roundsPerSecond": 2,
         "bulletsPerBurst": 1,
         "burstInterShotInterval": 0,
-        "clipSize": 12,
+        "clipSize": 0,
         "ammoPerShot": 1,
-        "reloadTime": 1.5,
+        "reloadTime": 0,
         "reloadSingle": false,
         "reloadDelay": 0,
         "falloff": {
@@ -3351,7 +3351,7 @@
         ],
         "reference": {
           "dps": 50,
-          "sustainedDps": 40
+          "sustainedDps": 50
         }
       },
       "altFire": null,
