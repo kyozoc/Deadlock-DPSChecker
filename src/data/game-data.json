@@ -1,7 +1,7 @@
 {
   "meta": {
-    "gameVersion": 6849,
-    "vdataVersion": 6849,
+    "gameVersion": 6858,
+    "vdataVersion": 6858,
     "warnings": [
       "hero_werewolf_transformed: 武器のヘッドショット倍率が vdata から取れない"
     ]
@@ -2081,7 +2081,7 @@
       "spiritScaling": {},
       "weapon": {
         "key": "citadel_weapon_nurse_set",
-        "bulletDamage": 13.372,
+        "bulletDamage": 14.442,
         "bulletsPerShot": 1,
         "roundsPerSecond": 2.6316,
         "bulletsPerBurst": 1,
@@ -2114,8 +2114,8 @@
           "Attribute_EWeaponAttribute_LongRange"
         ],
         "reference": {
-          "dps": 35.19,
-          "sustainedDps": 24.193
+          "dps": 38.006,
+          "sustainedDps": 26.129
         }
       },
       "altFire": null,
@@ -2395,12 +2395,12 @@
       "spiritScaling": {},
       "weapon": {
         "key": "citadel_weapon_ratking_set",
-        "bulletDamage": 5.7,
+        "bulletDamage": 5.8,
         "bulletsPerShot": 2,
         "roundsPerSecond": 5,
         "bulletsPerBurst": 1,
         "burstInterShotInterval": 0.1,
-        "clipSize": 24,
+        "clipSize": 26,
         "ammoPerShot": 1,
         "reloadTime": 2.8,
         "reloadSingle": false,
@@ -2428,8 +2428,8 @@
           "Attribute_EWeaponAttribute_Spreadshot"
         ],
         "reference": {
-          "dps": 57,
-          "sustainedDps": 36
+          "dps": 58,
+          "sustainedDps": 37.7
         }
       },
       "altFire": null,
@@ -6417,7 +6417,7 @@
           "scale": [
             {
               "type": "spirit",
-              "value": 1.1
+              "value": 1.012
             }
           ]
         },
@@ -6445,7 +6445,7 @@
           "scale": [
             {
               "type": "spirit",
-              "value": 0.74
+              "value": 0.681
             }
           ]
         },
@@ -6493,7 +6493,7 @@
             "scale": [
               {
                 "type": "spirit",
-                "value": 0.35
+                "value": 0.322
               }
             ]
           },
@@ -6502,7 +6502,7 @@
             "scale": [
               {
                 "type": "spirit",
-                "value": 0.35
+                "value": 0.322
               }
             ]
           },
@@ -6621,11 +6621,11 @@
         },
         {
           "HealOnHit": {
-            "value": 150,
+            "value": 125,
             "scale": [
               {
                 "type": "spirit",
-                "value": 2
+                "value": 1.7
               }
             ]
           },
@@ -6802,7 +6802,7 @@
         "AbilityCooldownBetweenCharge": -1,
         "AbilityPostCastDuration": 0.1,
         "AbilityUnitTargetLimit": 1,
-        "BonusDamagePercent": 75,
+        "BonusDamagePercent": 55,
         "ChannelMoveSpeed": -1,
         "Damage": {
           "value": 70,
@@ -8786,7 +8786,7 @@
         },
         {
           "MeleeResistReduction": -25,
-          "StunDuration": 0.6
+          "StunDuration": 0.7
         },
         {
           "TargetLifesteal": 75,
@@ -9089,7 +9089,7 @@
           "AbilityCooldown": -35
         },
         {
-          "BonusDamagePercent": 50
+          "BonusDamagePercent": 60
         }
       ],
       "card": [
@@ -12501,7 +12501,7 @@
           ]
         },
         "DamageHealMult": {
-          "value": 1.2,
+          "value": 1.3,
           "scale": [
             {
               "type": "healing",
@@ -12600,7 +12600,7 @@
         },
         "EnemyDamageSpeedPenalty": 0.5,
         "Radius": {
-          "value": 5,
+          "value": 5.5,
           "scale": [
             {
               "type": "radius",
@@ -12715,8 +12715,8 @@
           "Damage": 45
         },
         {
-          "GroundDashReductionPercent": -26,
-          "SlowPercent": 24
+          "GroundDashReductionPercent": -28,
+          "SlowPercent": 28
         },
         {
           "AbilityCooldown": -25,
@@ -12776,7 +12776,7 @@
         "AbilityCooldownBetweenCharge": -1,
         "AbilityUnitTargetLimit": 1,
         "BonusHealthOnKill": {
-          "value": 40,
+          "value": 50,
           "scale": [
             {
               "type": "power_increase",
@@ -15413,9 +15413,9 @@
         "BuildupDecayTime": 10,
         "BuildupLookAngle": 80,
         "BuildupLookAngleFull": 55,
-        "BuildupLookAngleVertical": 50,
+        "BuildupLookAngleVertical": 65,
         "BuildupTickRate": 0.075,
-        "BuildupTime": 2,
+        "BuildupTime": 1.75,
         "CameraTurnRateMax": 15,
         "ChannelMoveSpeed": 3.5,
         "ConeAngle": 180,
@@ -17201,7 +17201,7 @@
         },
         "AbilityUnitTargetLimit": 1,
         "AllyDamageReduction": 15,
-        "BonusMoveSpeed": 3,
+        "BonusMoveSpeed": 4,
         "Damage": {
           "value": 200,
           "scale": [
@@ -17235,6 +17235,7 @@
       },
       "upgrades": [
         {
+          "AbilityCooldown": -25,
           "BonusMoveSpeed": 2
         },
         {
@@ -18845,7 +18846,7 @@
         },
         {
           "AbilityCooldown": -20,
-          "DebuffDuration": 1.25
+          "DebuffDuration": 0.75
         }
       ],
       "card": [
@@ -18885,7 +18886,7 @@
       "props": {
         "AbilityCastDelay": 0.2,
         "AbilityCastRange": {
-          "value": 30,
+          "value": 25,
           "scale": [
             {
               "type": "range",
@@ -18953,7 +18954,7 @@
             }
           ]
         },
-        "MagicIncreasePerStack": 7,
+        "MagicIncreasePerStack": 6,
         "PostExplosionDuration": 0.8,
         "PreExplosionDuration": 1.4,
         "TickRate": 0.5
@@ -18963,12 +18964,13 @@
           "AbilityCharges": 2
         },
         {
+          "AbilityCastRange": 5,
           "AbilityCooldown": -22,
           "ImpactDamage": 70
         },
         {
           "FireRatePerStack": 9,
-          "MagicIncreasePerStack": 4
+          "MagicIncreasePerStack": 5
         }
       ],
       "card": [
@@ -19021,7 +19023,7 @@
           ]
         },
         "AbilityCooldown": {
-          "value": 160,
+          "value": 170,
           "scale": [
             {
               "type": "cooldown",
@@ -19033,7 +19035,7 @@
         "AbilityUnitTargetLimit": 1,
         "BounceGrace": 3.25,
         "BounceRadius": {
-          "value": 15.5,
+          "value": 15,
           "scale": [
             {
               "type": "range",
@@ -19064,12 +19066,12 @@
             }
           ]
         },
-        "SlowPercent": 32
+        "SlowPercent": 28
       },
       "upgrades": [
         {
           "GroundDashReductionPercent": -14,
-          "SlowPercent": 16
+          "SlowPercent": 14
         },
         {
           "Damage": {
@@ -27084,6 +27086,7 @@
             }
           ]
         },
+        "StackingPenaltyAnchorPercent": 80,
         "TechPower": 7
       },
       "sections": [
