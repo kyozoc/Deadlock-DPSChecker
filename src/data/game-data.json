@@ -22660,8 +22660,8 @@
           "cooldown": 42,
           "props": [
             {
-              "key": "StatusEffectImmobilize",
-              "kind": null,
+              "key": "TetherDuration",
+              "kind": "duration",
               "usage": "conditional"
             },
             {
@@ -26298,8 +26298,8 @@
           "cooldown": 40,
           "props": [
             {
-              "key": "StatusEffectEMP",
-              "kind": null,
+              "key": "AbilityDuration",
+              "kind": "duration",
               "usage": "conditional"
             },
             {
@@ -26681,8 +26681,8 @@
           "cooldown": 16,
           "props": [
             {
-              "key": "StatusEffectDisarmed",
-              "kind": null,
+              "key": "AbilityDuration",
+              "kind": "duration",
               "usage": "conditional"
             },
             {
@@ -29641,8 +29641,8 @@
           "cooldown": null,
           "props": [
             {
-              "key": "StatusEffectEMP",
-              "kind": null,
+              "key": "SilenceDuration",
+              "kind": "duration",
               "usage": "conditional"
             },
             {
@@ -31918,8 +31918,8 @@
           "cooldown": 35,
           "props": [
             {
-              "key": "StatusEffectStun",
-              "kind": null,
+              "key": "StunDuration",
+              "kind": "duration",
               "usage": "conditional"
             },
             {
@@ -31992,8 +31992,8 @@
           "cooldown": 42,
           "props": [
             {
-              "key": "StatusEffectEMP",
-              "kind": null,
+              "key": "AbilityDuration",
+              "kind": "duration",
               "usage": "conditional"
             },
             {
@@ -32822,8 +32822,8 @@
           "cooldown": null,
           "props": [
             {
-              "key": "StatusEffectStun",
-              "kind": null,
+              "key": "StunDuration",
+              "kind": "duration",
               "usage": "conditional"
             },
             {
@@ -36040,14 +36040,8 @@
     "StatusEffectEMP": {
       "en": "Status Effect EMP"
     },
-    "StatusEffectImmobilize": {
-      "en": "Status Effect Immobilize"
-    },
     "StatusEffectInvisible": {
       "en": "Status Effect Invisible"
-    },
-    "StatusEffectStun": {
-      "en": "Status Effect Stun"
     },
     "StatusResistancePercent": {
       "en": "Debuff Resist",
